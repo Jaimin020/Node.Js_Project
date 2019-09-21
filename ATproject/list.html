@@ -1,0 +1,121 @@
+<html>
+
+<head>
+  <link rel="icon" href="resources/long.svg" type="img">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/webapp.css" />
+  
+  <link rel="stylesheet" href="css/darkstyle.css"/>
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Zang</title>
+<body id="myBody" class="main-content">
+  
+    <div class="side noScrolBar  overflow-auto  fixed-bottom dark-theme-sid-color shadow ">
+        <div>
+          <div class="dark-theme-sid-color sticky-top shadow ">
+            <div class="theme-text-h4 d-flex justify-content-center  ">
+              <img src="../ATproject//logo/long-logo.svg" style="width: 80%; height:80%; padding: 1em;"></div>
+            <br>
+            <div class="d-flex justify-content-center"><img src="resources/Lighthouse.jpg" style="width: 50%; height:50%;"
+                class="rounded playlist-current-img-size">
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+              <audio controls>
+                <source src="media/Unplugged Hindi Songs 2019.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+           
+          </div>
+    <br>
+          <div class="d-flex justify-content-center ">
+            <div id="playinglist" class="container" style="padding: 0;">
+                <table  class="table table-hover table-dark" style="background-color:transparent;">
+                    <tbody id="playList">
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="main">
+    <div  style="padding: 3em; background-image: linear-gradient(to top , rgba(0,0,0,0), rgba(0,0,0,1));">
+    <div class="jumbotron jumbotron-fluid text-white " style="background-color:transparent;padding-bottom: 2em;">
+      <div class="container">
+        <h1 class="display-4">Top List</h1>
+        <br>
+        <button type="button" class="btn btn-primary btn-lg rounded-pill">Play All</button>
+      </div>
+    </div>
+
+    <table  class="table table-hover table-dark" style="background-color:transparent">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Artist</th>
+          <th scope="col">Length</th>
+        </tr>
+      </thead>
+      <tbody id="List">
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <script>
+  
+ var data='[    {        "Music_id": "1",        "Name": "Dil Chori",        "File": "media/01 - Dil Chori - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 20,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "2",        "Name": "Subah Subah",        "File": "media/02 - Subah Subah - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg",        "Gener": "rock",        "Music_count": 22,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191006,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "3",        "Name": "Chhote Chhote Peg",        "File": "media/03 - Chhote Chhote Peg - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 200,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20171206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "4",        "Name": "Bom Diggy Diggy",        "File": "media/04 - Bom Diggy Diggy - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 220,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20180506,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "5",        "Name": "Kaun Nachdi",        "File": "media/05 - Kaun Nachdi - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg",        "Gener": "rock",        "Music_count": 120,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20151206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "6",        "Name": "Lakk Mera Hit",        "File": "media/06 - Lakk Mera Hit - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 420,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20190916,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "7",        "Name": "Tera Yaar Hoon Main",        "File": "media/07 - Tera Yaar Hoon Main - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/Movie-Review-Sonu-Ke-Titu-Ki-Sweety-Movie.jpg",        "Gener": "rock",        "Music_count": 520,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191116,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "8",        "Name": "All Time Low",        "File": "media/All Time Low - Jon Bellion (192  kbps) (eMP3z.com).mp3",        "Image": "images/2d2da75168b8b3ae2b549b32157a568e.1000x1000x1.jpg",        "Gener": "rock",        "Music_count": 320,        "Artist": [            "Jon Bellion"        ],        "Time_stamp": 20191006,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "9",        "Name": "Animals",        "File": "media/Animals - Maroon 5.mp3",        "Image": "images/c05b3c4739a994bca85d932f6d6cb586.1000x1000x1.png",        "Gener": "rock",        "Music_count": 220,        "Artist": [            " Maroon 5"        ],        "Time_stamp": 20180206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "10",        "Name": "Believer",        "File": "media/Believer - Imagine Dragons.mp3",        "Image": "images/86e0d33ebe09cafa4e686ad0f38dc3df1000x1000x1.jpg",        "Gener": "rock",        "Music_count": 120,        "Artist": [            "Imagine Dragons"        ],        "Time_stamp": 20191226,        "Quility": 320,        "length":3.3,        "Type": "English"    }]';
+    var musiclist=JSON.parse(data);
+    function list2() {
+          var topList = document.getElementById("List");
+          var i;
+          var x=0;
+          for (i in musiclist) {
+            var tre = document.createElement("tr");
+            tre.innerHTML='<th scope="row">'+(x+1)+'  <img class="playicon" src="resources/play.svg"></th><td>'+musiclist[x].Name+'</td><td>'+musiclist[x].Artist+'</td><td>'+musiclist[x].length+'</td>';
+            topList.appendChild(tre);
+            x+=1;
+          }
+        }
+          list2();
+          function list6() {
+          var topList = document.getElementById("playList");
+          var i;
+          var x=0;
+          for (i in musiclist) {
+            var tre = document.createElement("tr");
+            tre.innerHTML='<th scope="row" ><img class="icon rounded-sm cover" src="'+musiclist[x].Image+'"></th><td>'+musiclist[x].Name+'</td><td>'+musiclist[x].Artist+'</td><td><img class="hover-ope crossbtn" src="resources/icons8x.png"></td>';
+            topList.appendChild(tre);
+            x+=1;
+          }
+        }
+          list6();
+          $(".playicon").click(function () {
+      if (this.src.search("resources/pause.svg") >= 0) {
+        $(".playicon").attr("src", "resources/play.svg");
+        this.src = "resources/play.svg";
+      } else {
+        $(".playicon").attr("src", "resources/play.svg");
+        this.src = "resources/pause.svg";
+      }
+    });
+   
+ </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
