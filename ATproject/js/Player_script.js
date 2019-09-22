@@ -11,6 +11,7 @@
                 playerTrack.addClass('active');
                 albumArt.addClass('active');
                 checkBuffering();
+                i.attr('class','fas fa-pause');
                 audio.play();
             }
             else
@@ -19,6 +20,7 @@
                 albumArt.removeClass('active');
                 clearInterval(buffInterval);
                 albumArt.removeClass('buffering');
+                i.attr('class','fas fa-play');
                 audio.pause();
             }
         },300);
@@ -120,6 +122,7 @@
 		
 		if( playProgress == 100 )
 		{
+			i.attr('class','fa fa-play');
 			seekBar.width(0);
             tProgress.text('00:00');
             albumArt.removeClass('buffering').removeClass('active');

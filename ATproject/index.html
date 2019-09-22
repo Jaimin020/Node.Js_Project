@@ -1,72 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Page Title</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src='main.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/darkstyle.css" />
+<script>
+$(document).ready(function(){
+    $('#scrollme').click(function() {
+        console.log($('#demo').css('left'));
+    $('#hi').animate({
+        scrollLeft: '+=300px'
+    }, 500);
+});
+});
+</script>
 <style>
-.flex-con{
-  display: flex;
-  background-color: brown;
-  width: 100%;
-  animation-name: example;
-  flex-wrap: wrap;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  justify-content: flex-end; 
-  /* flex-direction: column; */
-}
-.flex-con > div{
-  background-color: lightsalmon;
-  margin: 10px 10px 10px 10px; 
-  padding: 100px;
-  font-size: 30px;
-  animation-duration: 4s;
-  animation-name: example2;
-  animation-iteration-count: infinite;
-}
-
-@keyframes example {
-
-  0%   {background-color:maroon; left:0px; top:0px;}
-  25%  {background-color:brown; left:200px; top:0px;}
-  50%  {background-color:lightcoral; left:200px; top:200px;}
-  75%  {background-color:brown; left:0px; top:200px;}
-  100% {background-color:maroon; left:0px; top:0px;}}
-
-
-@keyframes example2{
-  0%   {background-color:darkgray; left:0px; top:0px;}
-  25%  {background-color:darkolivegreen; left:200px; top:0px;}
-  50%  {background-color:darkslategray; left:200px; top:200px;}
-  75%  {background-color:darkolivegreen; left:0px; top:200px;}
-  100% {background-color:darkgray; left:0px; top:0px;}
-}
-/* @media screen and (min-width: 1px){
-
-  .flex-con{
-  background-color: darkcyan; 
-}
-.flex-con > div{
-  background-color:darkgray;
-} */
+#demo {
+    width: 100px;
+    height: 100px;
+    background: green;
+    position: relative;
+    left: 800px;
 }
 </style>
 </head>
 <body>
-  <div class="flex-con">
-  <div>1</div>  
-  <div>2</div>  
-  <div>3</div>  
-  <div>4</div>  
-  <div>5</div>  
-  <div>6</div>  
-  <div>7</div>  
-  <div>8</div> 
-  </div>
-  
+<p><button id="scrollme">Click to scroll left</button></p>
+
+
+<div  id="hi" style="height:auto;width:100%;overflow-x:auto;overflow-y:hidden;white-space: nowrap;">
+        <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+        <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+        <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+        <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+        <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+     <span><figure class="figure  MusiccardHover"><img src="images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">Subah Subah</figcaption></figure></span>
+    
+    </div>
+    <button id="scrollme">scroll me </button>
 </body>
 </html>

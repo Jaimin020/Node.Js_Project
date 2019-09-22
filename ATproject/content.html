@@ -10,6 +10,26 @@
   <script src="jquery-3.4.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Zang</title>
+<style>
+    @media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 5;
+    -webkit-column-gap: 1.25rem;
+    -moz-column-gap: 1.25rem;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+  }
+  .card-columns .card {
+    display: inline-block;
+    width: 100%;
+  }
+}
+    </style>
+
+
 <body id="myBody" class="main-content">
   
     <div class="side noScrolBar  overflow-auto  fixed-bottom dark-theme-sid-color shadow ">
@@ -43,45 +63,27 @@
         </div>
       </div>
   <div class="main">
-    <div  style="padding: 3em; background-image: linear-gradient(to top , rgba(0,0,0,0), rgba(0,0,0,1));">
-    <div class="jumbotron jumbotron-fluid text-white " style="background-color:transparent;padding-bottom: 2em;">
-      <div class="container">
-        <h1 class="display-4">Top List</h1>
-        <br>
-        <div class="btn btn-primary btn-lg rounded-pill"> <img class="playicon rounded" src="resources/play-white.png"> Play All</div>
-      </div>
-    </div>
-
-    <table  class="table table-hover table-dark" style="background-color:transparent">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Artist</th>
-          <th scope="col">Length</th>
-        </tr>
-      </thead>
-      <tbody id="List">
-      </tbody>
-    </table>
-    </div>
+        <div  style="padding: 3em; background-image: linear-gradient(to top , rgba(0,0,0,0), rgba(0,0,0,1));">
+                <div class="jumbotron jumbotron-fluid text-white " style="background-color:transparent;padding-bottom: 2em;">
+                  <div class="container">
+                    <h1 class="display-4">Top List</h1>
+                    <br>
+                    <div class="btn btn-primary btn-lg rounded-pill"> <img class="playicon rounded" src="resources/play-white.png"> Play All</div>
+                  </div>
+                </div>
+            
+                <div id="contentid" class="card-columns">
+            
+                    </div>
+                </div>
+       
+    
   </div>
+
   <script>
   
  var data='[    {        "Music_id": "1",        "Name": "Dil Chori",        "File": "media/01 - Dil Chori - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 20,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "2",        "Name": "Subah Subah",        "File": "media/02 - Subah Subah - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg",        "Gener": "rock",        "Music_count": 22,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191006,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "3",        "Name": "Chhote Chhote Peg",        "File": "media/03 - Chhote Chhote Peg - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 200,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20171206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "4",        "Name": "Bom Diggy Diggy",        "File": "media/04 - Bom Diggy Diggy - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 220,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20180506,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "5",        "Name": "Kaun Nachdi",        "File": "media/05 - Kaun Nachdi - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/dc-Cover-ujv0d0lk71202u8r69hd5lm9p4-20180106143337.Medi.jpeg",        "Gener": "rock",        "Music_count": 120,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20151206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "6",        "Name": "Lakk Mera Hit",        "File": "media/06 - Lakk Mera Hit - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/3801063563.jpg",        "Gener": "rock",        "Music_count": 420,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20190916,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "7",        "Name": "Tera Yaar Hoon Main",        "File": "media/07 - Tera Yaar Hoon Main - DJMaza.Fun - 320Kbps.mp3",        "Image": "images/Movie-Review-Sonu-Ke-Titu-Ki-Sweety-Movie.jpg",        "Gener": "rock",        "Music_count": 520,        "Artist": [            "artist1",            "artist2"        ],        "Time_stamp": 20191116,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "8",        "Name": "All Time Low",        "File": "media/All Time Low - Jon Bellion (192  kbps) (eMP3z.com).mp3",        "Image": "images/2d2da75168b8b3ae2b549b32157a568e.1000x1000x1.jpg",        "Gener": "rock",        "Music_count": 320,        "Artist": [            "Jon Bellion"        ],        "Time_stamp": 20191006,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "9",        "Name": "Animals",        "File": "media/Animals - Maroon 5.mp3",        "Image": "images/c05b3c4739a994bca85d932f6d6cb586.1000x1000x1.png",        "Gener": "rock",        "Music_count": 220,        "Artist": [            " Maroon 5"        ],        "Time_stamp": 20180206,        "Quility": 320,        "length":2.3,        "Type": "English"    },    {        "Music_id": "10",        "Name": "Believer",        "File": "media/Believer - Imagine Dragons.mp3",        "Image": "images/86e0d33ebe09cafa4e686ad0f38dc3df1000x1000x1.jpg",        "Gener": "rock",        "Music_count": 120,        "Artist": [            "Imagine Dragons"        ],        "Time_stamp": 20191226,        "Quility": 320,        "length":3.3,        "Type": "English"    }]';
     var musiclist=JSON.parse(data);
-    function list2() {
-          var topList = document.getElementById("List");
-          var i;
-          var x=0;
-          for (i in musiclist) {
-            var tre = document.createElement("tr");
-            tre.innerHTML='<th scope="row">'+(x+1)+'  <img class="playicon" src="resources/play-white.png"></th><td>'+musiclist[x].Name+'</td><td>'+musiclist[x].Artist+'</td><td>'+musiclist[x].length+'</td>';
-            topList.appendChild(tre);
-            x+=1;
-          }
-        }
-          list2();
           function list6() {
           var topList = document.getElementById("playList");
           var i;
@@ -103,7 +105,28 @@
         this.src = "resources/pause-white6.png";
       }
     });
-   
+
+    function list2() {
+      var contentList = document.getElementById("contentid");
+      var i;
+      for (i in musiclist.sort(function(a,b){return(a.Time_stamp-b.Time_stamp)})) {
+        var img1 = document.createElement("div");
+     img1.innerHTML=' <img src="'+musiclist[i].Image+'" class="card-img-top">    <div class="card-body">      <h5 class="card-title">'+musiclist[i].Name+'</h5>      <p class="card-text">'+musiclist[i].Artist+'</p>    </div> ';
+       // img1.innerHTML='<img src="'+musiclist[i].Image+'" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">'+musiclist[i].Name+'</figcaption>';
+        img1.setAttribute("class", "card text-white dark-theme-sid-color");
+        contentList.appendChild(img1);
+      }
+      for (i in musiclist.sort(function(a,b){return(a.Time_stamp-b.Time_stamp)})) {
+        var img1 = document.createElement("div");
+     img1.innerHTML=' <img src="'+musiclist[i].Image+'" class="card-img-top">    <div class="card-body">      <h5 class="card-title">'+musiclist[i].Name+'</h5>      <p class="card-text">'+musiclist[i].Artist+'</p>    </div> ';
+       // img1.innerHTML='<img src="'+musiclist[i].Image+'" class="figure-img cover rounded Musiccard" alt="sow"><figcaption class="figure-caption ">'+musiclist[i].Name+'</figcaption>';
+        img1.setAttribute("class", "card text-white dark-theme-sid-color");
+        contentList.appendChild(img1);
+      }
+      
+    }
+list2();
+
  </script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
