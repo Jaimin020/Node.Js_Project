@@ -1,0 +1,187 @@
+.dark-theme-sid-color {
+  background-color: rgb(38, 38, 38);
+}
+
+.dark-theme-main-color {
+  background-color: rgb(48, 48, 48);
+}
+
+.theme-text-h4 {
+  padding-left: 0.2em;
+  color: gainsboro;
+}
+
+.theme-text-h6 {
+  padding-left: 0.2em;
+  color: rgba(200, 200, 200, 0.8)
+}
+
+.scrolling-wrapper {
+  padding: 0.5em;
+
+  overflow-x: scroll;
+  white-space: nowrap;
+
+}
+
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(200, 200, 200, 0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(200, 200, 200, 0.4);
+}
+
+.scrolling-wrapper::-webkit-scrollbar-button {
+  background-color: brown;
+  width: 100%;
+  height: 100%;
+}
+
+
+.Musiccard {
+  border-radius: 5%;
+  border-bottom-color: black;
+  height: 8em;
+  width: 8em;
+  margin: 0.2em;
+}
+.MusiccardHover{
+  border-radius: 5%;
+  border-bottom-color: black;
+  height: 8em;
+  width: 8em;
+  margin-right: 2em;
+}
+
+.MusiccardHover:hover {
+  transform: scale(1.1);
+
+  box-shadow: 10px 10px 5px black;
+}
+
+
+.side {
+  float: left;
+  width: 25%;
+  height: 100%;
+
+
+}
+
+.carousel-item-small {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-size-small {
+  width: 65%;
+  height: 14.5em;
+  margin:auto;
+}
+
+.main {
+  float: right;
+  width: 75%;
+  height: 100%;
+}
+
+.main-content {
+  background: url("../resources/Dark_background_1920x1080.png") center top no-repeat;
+  /* background-color: azure; */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.playlist-icon-size {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.playlist-current-img-size {
+  width: 7.5em;
+  height: 7.5em;
+
+}
+
+.noScrolBar::-webkit-scrollbar {
+  display: none;
+}
+
+.shadow {
+  box-shadow: white
+}
+
+
+.scrollBtn {
+  width: 1em;
+  height: 1.5em;
+  z-index: 100;
+  opacity: 0.5;
+  font-size: 100%;
+  background-color: transparent;
+  border: 0px;
+  font-weight: bolder;
+  -moz-user-focus: ignore;
+  color: white;
+}
+
+.scrollBtn:focus {
+  outline: none;
+}
+
+.scrollBtn:hover {
+  opacity: 1;
+}
+
+.playicon {
+  width: 1.5em;
+  height: 1.5em;
+}
+.icon{
+    width: 2.3em;
+    height: 2.3em;
+  }
+.hover-ope:hover{
+  opacity: 1;
+}
+.crossbtn{
+  width: 1.3em;height: 1.3em;  
+    opacity: 0.7; 
+    z-index: 100;
+}
+.cover {object-fit: cover;}
+.bottom-left {
+position: absolute;
+bottom: 8px;
+left: 16px;
+}
+
