@@ -15,14 +15,27 @@ export class PlaylistComponent implements OnInit {
   i=0;
   nowimg=this.playlist[this.i].Image;
   nowp= this.playlist[this.i].File;
-  src_playing=" <source id='playing' src="+this.nowp+" type='audio/mpeg'>";
+  src_playing=this.playlist[this.i].Name;
   audio:any =new Audio();
   
 
 
-  constructor() { this.audio.src=this.nowp;}
+  constructor() { this.audio.src=this.nowp;
+    this.audio.onended= function(){
+      this.i=(this.i+1)%10;
+      this.nowp=this.playlist[this.i].File;
+      this.audio.src=this.nowp;
+      this.audio.load();
+      this.audio.play();
+   
+      
+      this.nowimg=this.playlist[this.i].Image;
+      this.src_playing =this.playlist[this.i].Name;
+   
+      console.log(this.nowp);
+    };
+  }
   nextp(event) {
- 
     
     this.i=(this.i+1)%10;
     this.nowp=this.playlist[this.i].File;
@@ -32,7 +45,7 @@ export class PlaylistComponent implements OnInit {
  
     
     this.nowimg=this.playlist[this.i].Image;
-    this.src_playing =" <source id='playing' src='"+this.nowp+"' type='audio/mpeg'>";
+    this.src_playing =this.playlist[this.i].Name;
  
     console.log(this.nowp);
  }
@@ -55,7 +68,7 @@ playp(event) {
     this.audio.src=this.nowp;
     this.audio.load();
     this.audio.play();
-    this.src_playing ="<source id='playing' src="+this.nowp+" type='audio/mpeg'>";
+    this.src_playing =this.playlist[this.i].Name;
     console.log(this.nowp);
 }
 removesong(index)
