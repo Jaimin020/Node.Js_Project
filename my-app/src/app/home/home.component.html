@@ -108,9 +108,11 @@
   <div class="pagination">
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#topList')" class="centerVertical scrollBtn"
       alt="">
-    <div id="topList" class="scrollview">
+    <div id="topList" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
-        <figure class="figure  MusiccardHover"><img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
+        <figure class="figure  MusiccardHover">
+            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+          <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
           <figcaption class="figure-caption ">Subah Subah</figcaption>
         </figure>
@@ -129,10 +131,15 @@
       alt="">
     <div id="newList" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
-        <figure class="figure  MusiccardHover"><img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
+       
+        <figure class="figure  MusiccardHover">
+            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+            <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
-          <figcaption class="figure-caption ">Subah Subah</figcaption>
-        </figure>
+            <figcaption class="figure-caption ">Subah Subah</figcaption>
+
+          </figure>
+
       </span>
     </div>
     <img src="../assets/resources/arrow_right.svg" class="centerVertical scrollBtn" onclick="leftscroll('#newList')"
@@ -145,7 +152,9 @@
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#hi')" class="centerVertical scrollBtn" alt="">
     <div id="hi" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
-        <figure class="figure  MusiccardHover"><img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
+        <figure class="figure  MusiccardHover">
+            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+          <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
           <figcaption class="figure-caption ">Subah Subah</figcaption>
         </figure>
