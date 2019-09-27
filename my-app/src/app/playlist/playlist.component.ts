@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { $ } from 'protractor';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild} from '@angular/core';
+//import { $ } from 'protractor';
 import { Source } from 'webpack-sources';
-
+import * as $ from 'jquery';
+import { eventNames } from 'cluster';
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
@@ -21,27 +22,33 @@ export class PlaylistComponent implements OnInit {
 
 
   constructor() { this.audio.src=this.nowp;
-    this.audio.onended= function(){
-      this.i=(this.i+1)%10;
-      this.nowp=this.playlist[this.i].File;
-      this.audio.src=this.nowp;
-      this.audio.load();
-      this.audio.play();
+    // this.audio.onended= function(){
+    //   this.i=(this.i+1)%10;
+    //   this.nowp=this.playlist[this.i].File;
+    //   this.audio.src=this.nowp;
+    //   this.audio.load();
+    //   this.audio.play();
    
       
-      this.nowimg=this.playlist[this.i].Image;
-      this.src_playing =this.playlist[this.i].Name;
+    //   this.nowimg=this.playlist[this.i].Image;
+    //   this.src_playing =this.playlist[this.i].Name;
    
-      console.log(this.nowp);
-    };
+    //   console.log(this.nowp);
+    // };
   }
   nextp(event) {
     
+    
     this.i=(this.i+1)%10;
     this.nowp=this.playlist[this.i].File;
-    this.audio.src=this.nowp;
-    this.audio.load();
-    this.audio.play();
+
+    event.src=this.nowp;
+    event.load();
+    event.play();
+   // this.audio=$("#playing");
+    // this.audio.src=this.nowp;
+    // this.audio.load();
+    // this.audio.play();
  
     
     this.nowimg=this.playlist[this.i].Image;
@@ -51,13 +58,13 @@ export class PlaylistComponent implements OnInit {
  }
 pausp(event) {
 
-  this.audio.pause();
+  event.pause();
   console.log(this.nowp);
 }
 
 playp(event) {
 
-  this.audio.play();
+  event.play();
   console.log(this.nowp);
 }
  previousp(event) {
@@ -65,9 +72,12 @@ playp(event) {
     this.i=(this.i-1)%10;
     this.nowp=this.playlist[this.i].File;
     this.nowimg=this.playlist[this.i].Image;
-    this.audio.src=this.nowp;
-    this.audio.load();
-    this.audio.play();
+    // this.audio.src=this.nowp;
+    // this.audio.load();
+    // this.audio.play();
+    event.src=this.nowp;
+    event.load();
+    event.play();
     this.src_playing =this.playlist[this.i].Name;
     console.log(this.nowp);
 }
@@ -76,5 +86,10 @@ removesong(index)
   this.playlist.splice(index, 1);
 }
   ngOnInit() {
+    // $("document").getredy(function(){
+    //   this.audio=$("#playing");
+    // }
+    // );
+    
   }
 }

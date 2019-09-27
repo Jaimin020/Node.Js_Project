@@ -12,11 +12,14 @@
                 </div>
                 <p class="text-white">{{src_playing}}</p>
             <br>
+            <audio #play id="playing" controls>
+                <source  src="{{nowp}}">
+                </audio>
             <div class="d-flex justify-content-center">
-                    <button (click) = "previousp($event)" ><<</button> 
-                    <button (click) = "pausp($event)" >||</button> 
-                    <button (click) = "playp($event)" ><></button> 
-        <button (click) = "nextp($event)" >>></button>
+                    <button (click) = "previousp(play)" ><<</button> 
+                    <button (click) = "pausp(play)" >||</button> 
+                    <button (click) = "playp(play)" ><></button> 
+        <button (click) = "nextp(play)" >>></button>
                    
             
                 <!-- <audio controls   [innerHTML]="{{src_playing}}"> 
