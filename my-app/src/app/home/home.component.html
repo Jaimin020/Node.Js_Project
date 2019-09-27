@@ -111,7 +111,7 @@
     <div id="topList" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
         <figure class="figure  MusiccardHover">
-            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+            <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
           <figcaption class="figure-caption ">{{music.Name}}</figcaption>
@@ -133,7 +133,7 @@
       <span *ngFor="let music of musiclist">
        
         <figure class="figure  MusiccardHover">
-            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+            <img class="figure-img  Musiccard mcardplay"(click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
             <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
             <figcaption class="figure-caption ">{{music.Name}}</figcaption>
@@ -153,7 +153,7 @@
     <div id="hi" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
         <figure class="figure  MusiccardHover">
-            <img class="figure-img  Musiccard mcardplay" src="../../assets/resources/icons8-circled-play.png">
+            <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
           <figcaption class="figure-caption ">{{music.Name}}</figcaption>

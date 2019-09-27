@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { FormsModule } from "@angular/forms";
+import { SharedDataService } from './shared-data.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FormsModule } from "@angular/forms";
     BrowserModule,
     AppRoutingModule,FormsModule
   ],
-  providers: [],
+  providers: [SharedDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
