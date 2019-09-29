@@ -29,7 +29,7 @@ export class PlaylistComponent implements OnInit {
   constructor(data1:SharedDataService ) { 
 
     this.playlist =  data1.sharedplaylist;
-    this.i=0;
+    this.i=data1.length;
     this.length=data1.length;
     this.nowimg=this.playlist[this.i].Image;
     this.nowp= this.playlist[this.i].File;
@@ -52,9 +52,14 @@ export class PlaylistComponent implements OnInit {
   nextp(event) {
     
     
-    this.i=(this.i+1)%this.length;
-    this.nowp=this.playlist[this.i].File;
 
+    this.i=(this.i-1)%this.length;
+    if(this.i<0)
+    {
+      this.i=this.length;
+    }
+    this.nowp=this.playlist[this.i].File;
+    
     event.src=this.nowp;
     event.load();
     event.play();
@@ -82,11 +87,8 @@ playp(event) {
 }
  previousp(event) {
 
-    this.i=(this.i-1)%this.length;
-    if(this.i<0)
-    {
-      this.i=this.length;
-    }
+    this.i=(this.i+1)%this.length;
+   
     this.nowp=this.playlist[this.i].File;
     this.nowimg=this.playlist[this.i].Image;
     // this.audio.src=this.nowp;

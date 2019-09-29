@@ -39,8 +39,9 @@
     </div>
 
     <div id="contentid" class="card-columns">
-        <div *ngFor="let music of musiclist" class="card text-white dark-theme-sid-color"> 
-            <img src="{{music.Image}}" class="card-img-top">
+        <div *ngFor="let music of musiclist" class="card text-white dark-theme-sid-color bounceIn"> 
+            <img class="figure-img  mcardplay" style="top:2.5em;left: 2.5em;" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
+            <img src="{{music.Image}}" style="height: 10em;" class="card-img-top cover">
             <div class="card-body">
                 <h5 class="card-title">{{music.Name}}</h5>
                 <p class="card-text">{{music.Artist}}</p>
