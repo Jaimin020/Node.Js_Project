@@ -110,7 +110,7 @@
       alt="">
     <div id="topList" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
-        <figure class="figure  MusiccardHover">
+        <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
@@ -132,7 +132,7 @@
     <div id="newList" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
        
-        <figure class="figure  MusiccardHover">
+        <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay"(click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
             <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
@@ -152,7 +152,7 @@
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#hi')" class="centerVertical scrollBtn" alt="">
     <div id="hi" class="scrollview noScrolBar">
       <span *ngFor="let music of musiclist">
-        <figure class="figure  MusiccardHover">
+        <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">

@@ -11,6 +11,7 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    document.body.scrollTop=0;
   }
 
 }
