@@ -33,18 +33,17 @@ db.collection("'User_Details").insertOne(ud,function(err,collection){
     console.log("INsert");
 })*/
 var Song_Details = new schema(
-    {
-        Music_id: strnig,
-        Name: string,
-        File: string,
-        Image: string,
-        Gener: string,
+    { Music_id:String,
+        Name: String,
+        File: String,
+        Image: String,
+        Gener: String,
         Music_count: Number,
-        Artist: any,
+        Artist: Object,
         Time_stamp: Date,
         Quility: Number,
         length: Number,
-        Type: string
+        Type: String
     }
 )
 var Userm = mongoose.model("Song_Details", Song_Details);

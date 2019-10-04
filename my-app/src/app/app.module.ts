@@ -9,7 +9,7 @@ import { ListComponent } from './list/list.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { FormsModule } from "@angular/forms";
 import { SharedDataService } from './shared-data.service';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +20,8 @@ import { SharedDataService } from './shared-data.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,FormsModule
+    AppRoutingModule,FormsModule,
+    HttpClientModule
   ],
   providers: [SharedDataService],
   bootstrap: [AppComponent]
