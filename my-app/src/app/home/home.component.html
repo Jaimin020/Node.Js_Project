@@ -133,7 +133,7 @@
       <span *ngFor="let music of musiclist">
        
         <figure class="figure  MusiccardHover fadeIn">
-            <img class="figure-img  Musiccard mcardplay"(click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
+            <img class="figure-img  Musiccard mcardplay"(click)="addsong(music,play)" src="../../assets/resources/icons8-circled-play.png">
             <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
             <figcaption class="figure-caption ">{{music.Name}}</figcaption>
@@ -159,7 +159,7 @@
           <figcaption class="figure-caption ">{{music.Name}}</figcaption>
         </figure>
       </span>
-
+      
     </div>
     <img src="../assets/resources/arrow_right.svg" class="centerVertical scrollBtn" onclick="leftscroll('#hi')" alt="">
   </div>

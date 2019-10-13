@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Pipe, PipeTransform, ElementRef, ViewContainerRef } from '@angular/core';
 //import { $ } from 'protractor';
 import { Source } from 'webpack-sources';
 import * as $ from 'jquery';
@@ -22,14 +22,13 @@ export class PlaylistComponent implements OnInit {
   nowp;
   src_playing;
   length;
-  // audio:any =new Audio();
-  
-
+ audio:any;
+ sharedData:SharedDataService;
 
   constructor(data1:SharedDataService ) { 
-
+    this.sharedData=data1;
     this.playlist =  data1.sharedplaylist;
-    this.i=data1.length;
+    this.i=data1.nowPi;
     this.length=data1.length;
     this.nowimg=this.playlist[this.i].Image;
     this.nowp= this.playlist[this.i].File;
@@ -49,46 +48,57 @@ export class PlaylistComponent implements OnInit {
     //   console.log(this.nowp);
     // };
   }
+  loadSong(){
+    this.i=this.sharedData.length-1;
+    this.sharedData.nowPi=this.i;
+    this.nowp=this.sharedData.sharedplaylist[this.i].File;
+    
+    this.audio.src=this.nowp;
+    this.audio.load();
+    this.audio.play();
+    this.nowimg=this.sharedData.sharedplaylist[this.i].Image;
+    this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
+
+    console.log("Song loaded");
+  }
   nextp(event) {
     
-    
+    this.audio=event;
 
-    this.i=(this.i-1)%this.length;
+    this.i=(this.i-1)%this.sharedData.length;
+    this.sharedData.nowPi=this.i;
     if(this.i<0)
     {
-      this.i=this.length;
+      this.i=this.sharedData.length;
     }
-    this.nowp=this.playlist[this.i].File;
+    this.nowp=this.sharedData.sharedplaylist[this.i].File;
     
     event.src=this.nowp;
     event.load();
     event.play();
-   // this.audio=$("#playing");
-    // this.audio.src=this.nowp;
-    // this.audio.load();
-    // this.audio.play();
- 
     
-    this.nowimg=this.playlist[this.i].Image;
-    this.src_playing =this.playlist[this.i].Name;
- 
-    console.log(this.nowp);
+    this.nowimg=this.sharedData.sharedplaylist[this.i].Image;
+    this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
+    console.log(this.sharedData.sharedplaylist);
+    console.log(this.i);
  }
 pausp(event) {
+  this.audio=event;
 
-  event.pause();
+  this.audio.pause();
   console.log(this.nowp);
 }
 
 playp(event) {
-
-  event.play();
+  this.audio=event;
+  this.audio.play();
   console.log(this.nowp);
 }
  previousp(event) {
 
-    this.i=(this.i+1)%this.length;
-   
+    this.i=(this.i+1)%this.sharedData.length;
+    this.audio=event;
+    this.sharedData.nowPi=this.i;
     this.nowp=this.playlist[this.i].File;
     this.nowimg=this.playlist[this.i].Image;
     // this.audio.src=this.nowp;
@@ -98,17 +108,17 @@ playp(event) {
     event.load();
     event.play();
     this.src_playing =this.playlist[this.i].Name;
-    console.log(this.nowp);
+    console.log(this.sharedData.sharedplaylist);
+    console.log(this.i);
 }
 removesong(index)
 {
   this.playlist.splice(index, 1);
 }
   ngOnInit() {
-    // $("document").getredy(function(){
-    //   this.audio=$("#playing");
-    // }
-    // );
-     
+
+
+      this.audio=$("#playing");
+      console.log(this.audio);
   }
 }

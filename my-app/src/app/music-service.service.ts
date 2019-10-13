@@ -29,8 +29,8 @@ export class MusicServiceService {
   constructor(private http: HttpClient) { }
 
   private _url :string = "http://localhost:8000/songs"
-  getMusic():Observable<Imusic[]> {
-    return this.http.get<Imusic[]>(this._url)
+  getMusic():Observable<string> {
+    return this.http.get<string>(this._url)
       }
  
 }

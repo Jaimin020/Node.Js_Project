@@ -12,8 +12,8 @@
                 </div>
                 <p class="text-white">{{src_playing}}</p>
             <br>
-            <audio #play id="playing" controls>
-                <source  src="{{nowp}}">
+            <audio #play (ended)="nextp(play)"  id="playing" controls>
+                <source src="{{nowp}}">
                 </audio>
             <div class="d-flex justify-content-center">
                     <button (click) = "previousp(play)" ><<</button> 
