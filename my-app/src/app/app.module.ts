@@ -10,20 +10,23 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { FormsModule } from "@angular/forms";
 import { SharedDataService } from './shared-data.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+import { DbCrudService } from './db-crud.service';
 @NgModule({
   declarations: [
     AppComponent,
     ChartsComponent,
     HomeComponent,
     ListComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,
     HttpClientModule
   ],
-  providers: [SharedDataService],
+  providers: [SharedDataService,DbCrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

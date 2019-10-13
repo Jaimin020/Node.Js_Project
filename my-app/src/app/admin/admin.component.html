@@ -1,0 +1,32 @@
+<div>
+    <table class=".table-striped-dark">
+        <tr>
+            <td style="color: aliceblue;">Please select a Table:-</td><br>
+        </tr>
+        <tr>
+            <td>
+                <ul id="m" style="color: aliceblue;">
+                    <li *ngFor="let sn of sns">
+                        {{sn}}:-
+                        <input type="radio" name="m">
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td style="color: aliceblue;">Please select a Operation:-</td><br>
+        </tr>
+        <tr>
+            <td>
+                <div *ngFor="let so of sos">
+                    <h6 id="o" style="color: aliceblue;">{{so}}:-<input type="radio" name="so"></h6>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Go" (click)="on_click()">
+            </td>
+        </tr>
+    </table>
+</div>
