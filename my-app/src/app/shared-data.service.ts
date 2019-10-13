@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,5 +10,9 @@ export class SharedDataService {
   sharedplaylist = JSON.parse(this.data);
   length=this.sharedplaylist.length;
   nowPi=this.sharedplaylist.length-1;
+  invokeEvent: Subject<any> = new Subject();
+  callMethodOfSecondComponent() { 
+    this.invokeEvent.next("someVal")      
+  }
   constructor() { }
 }

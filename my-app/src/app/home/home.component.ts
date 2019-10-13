@@ -19,14 +19,15 @@ export class HomeComponent implements OnInit {
     this.sharedData=list;
 
   }
-  addsong(song,event){
+  addsong(song){
    
-    this.sharedData.sharedplaylist[this.sharedData.length]=song;
+
+    this.sharedData.sharedplaylist.splice(this.sharedData.nowPi, 0, song);
+    //this.sharedData.sharedplaylist[this.sharedData.length]=song;
+
     this.sharedData.length= this.sharedData.length+1;
-    this.sharedData.nowPi=this.sharedData.length-1;
-    var pc:PlaylistComponent =new PlaylistComponent(this.sharedData);
-    console.log(this.audio)
-    pc.loadSong();
+    this.sharedData.nowPi=this.sharedData.nowPi;
+    this.sharedData.callMethodOfSecondComponent(); 
   
   } 
    ngOnInit() {
