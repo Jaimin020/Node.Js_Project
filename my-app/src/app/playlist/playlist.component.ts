@@ -77,7 +77,7 @@ export class PlaylistComponent implements OnInit {
   nextp(event) {
     
     this.audio=$("#playing");
-
+  //  $("#"+this.sharedData.nowPi).css({"background-color":"red"});
     this.i=(this.i-1)%this.sharedData.length;
     this.sharedData.nowPi=this.i;
     if(this.i<0)
@@ -109,7 +109,10 @@ playp(event) {
 }
  previousp(event) {
   this.audio=$("#playing");
-    this.i=(this.i+1)%(this.sharedData.length);
+ // $("#"+this.sharedData.nowPi).css({"background-color":"red"});
+  console.log($("#"+this.sharedData.nowPi));
+  
+  this.i=(this.i+1)%(this.sharedData.length);
 
     console.log(this.i);
     this.sharedData.nowPi=this.i;
@@ -122,8 +125,8 @@ playp(event) {
     this.audio.attr('src', this.nowp);
     this.audio.trigger("play");
     this.src_playing =this.playlist[this.i].Name;
-    console.log(this.sharedData.sharedplaylist);
-    console.log(this.i);
+    //console.log(this.sharedData.sharedplaylist);
+   // console.log(this.i);
 }
 removesong(index)
 {
