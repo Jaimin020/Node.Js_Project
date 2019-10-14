@@ -22,20 +22,12 @@ db.once('open', mongoConnected);
 var schema = mongoose.Schema
 function mongoConnected() {
 	var Song_Details = new schema(
-        { Music_id:Object,
+        { Music_id:String,
             Name: String,
-            File: String,
-            Image: String,
-            Gener: String,
-            Music_count: Number,
-            Artist: Object,
-            Time_stamp: Date,
-            Quility: Number,
-            length: Number,
-            Type: String
+           
         }
     )
-    var songs = mongoose.model("Song_Details", Song_Details);
+    var songs = mongoose.model("songs", Song_Details);
    console.log(songs.find(function (err,so){
     console.log(so);
    }));
