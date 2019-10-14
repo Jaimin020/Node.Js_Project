@@ -5,12 +5,11 @@
         </tr>
         <tr>
             <td>
-                <ul id="m" style="color: aliceblue;">
-                    <li *ngFor="let sn of sns">
-                        {{sn}}:-
-                        <input type="radio" name="m">
-                    </li>
-                </ul>
+                <select id="m">
+                    <option *ngFor="let sn of sns">
+                        {{sn}}
+                    </option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -18,14 +17,28 @@
         </tr>
         <tr>
             <td>
-                <div *ngFor="let so of sos">
-                    <h6 id="o" style="color: aliceblue;">{{so}}:-<input type="radio" name="so"></h6>
-                </div>
+                <select id="o">
+                    <option *ngFor="let so of sos">
+                        {{so}}
+                    </option>
+                </select>
             </td>
         </tr>
         <tr>
             <td>
                 <input type="button" value="Go" (click)="on_click()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div *ngIf = "istrue; then thenblock" ></div>
+                <ng-template #thenblock >
+                    <div style="color: aliceblue;">
+                    Name:-<input type="text" value="name"><br>
+                    Password:-<input type="password" value="password"><br>
+                    <input type="button" value="Insert">
+                </div>
+                </ng-template>
             </td>
         </tr>
     </table>

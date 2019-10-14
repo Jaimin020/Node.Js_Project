@@ -14,7 +14,7 @@ export class DbCrudService {
     console.log(s)
     var a:any;
     const headers=new HttpHeaders().set('Content-Type','application/json');
-    return this.http.post<user[]>("http://localhost:8000/details/"+s,{
+    return this.http.post<any>("http://localhost:8000/details/"+s,{
       headers:headers
     })
   }
