@@ -12,8 +12,8 @@
                 </div>
                 <p class="text-white">{{src_playing}}</p>
             <br>
-            <audio #play id="playing" controls>
-                <source  src="{{nowp}}">
+            <audio #play (ended)="nextp(play)"  id="playing" controls>
+                <source id="playsource" src="{{nowp}}">
                 </audio>
             <div class="d-flex justify-content-center">
                     <button (click) = "previousp(play)" ><<</button> 
@@ -29,16 +29,16 @@
             </div>
            </div>
         <br>
-        <div class="d-flex justify-content-center " >
+        <div  class="d-flex justify-content-center " >
             <div id="playinglist" class="container" style="padding: 0;">
-                <table class="table table-hover table-dark fadeIn" style="background-color:transparent;">
-                    <tbody id="pList">
-                        <tr  *ngFor="let music of playlist.reverse()" >
+                <table  class="table table-hover table-dark fadeIn" style="background-color:transparent;">
+                    <tbody id="pList" >
+                        <tr   *ngFor="let music of playlist.reverse() ; index as i" id="{{sharedData.length-i-1}}" >
                             <th scope="row"><img class="icon rounded-sm cover "
                                     src="{{music.Image}}"></th>
                             <td>{{music.Name}}</td>
                             <td>{{music.Artist}}</td>
-                            <td><img class="hover-ope crossbtn" (click)="removesong(playinglist[i])" src="../../assets/resources/icons8x.png"></td>
+                            <td><img class="hover-ope crossbtn" (click)="removesong(i)" src="../../assets/resources/icons8x.png"></td>
                         </tr>
                     </tbody>
                 </table>
