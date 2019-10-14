@@ -19,7 +19,7 @@ export class SharedDataService {
   }
   constructor(private music:MusicServiceService) {
 
-  music.getMusic().subscribe(x => {this.sharedplaylist=x;console.log(this.sharedplaylist)})  
+  //music.getMusic().subscribe(x => {this.sharedplaylist=x;console.log(this.sharedplaylist)})  
   
 }
 
