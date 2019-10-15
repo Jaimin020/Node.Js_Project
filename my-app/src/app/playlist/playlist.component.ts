@@ -6,6 +6,7 @@ import { eventNames } from 'cluster';
 
 
 import { SharedDataService } from '../shared-data.service';
+import { MusicServiceService } from '../music-service.service';
 @Pipe({ name: 'reverse' })
 @Component({
   selector: 'app-playlist',
@@ -24,18 +25,10 @@ export class PlaylistComponent implements OnInit {
   length;
  audio:any;
  sharedData:SharedDataService;
-
-  constructor(data1:SharedDataService ) { 
-    
+  db:MusicServiceService;
+  constructor(data1:SharedDataService,db:MusicServiceService ) { 
+    this.db=db;
     this.sharedData=data1;
-    this.playlist =  data1.sharedplaylist;
-    this.i=data1.nowPi;
-    this.length=data1.length;
-    this.nowimg=this.playlist[this.i].Image;
-    this.nowp= this.playlist[this.i].File;
-    this.src_playing=this.playlist[this.i].Name;
-    
-
 
     this.sharedData.invokeEvent.subscribe(value => {
       if(value === 'someVal'){
@@ -144,8 +137,19 @@ removesong(index)
 }
   ngOnInit() {
 
-
-      this.audio=$("#playing");
+      this.db.getMusic().subscribe(x=>{
+        this.sharedData.sharedplaylist=x;
+        this.playlist =  this.sharedData.sharedplaylist;
+        this.i=this.sharedData.sharedplaylist.length-1;
+        this.sharedData.nowPi=this.i;        
+        this.length=this.sharedData.sharedplaylist.length;
+        this.sharedData.length=this.length;
+        this.nowimg=this.playlist[this.i].Image;
+        this.nowp= this.playlist[this.i].File;
+        this.src_playing=this.playlist[this.i].Name;
+        this.loadSong();
+      });
+      
       console.log(this.audio);
   }
 }
