@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { DbCrudService } from './db-crud.service';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [SharedDataService,DbCrudService],
+  providers: [SharedDataService,DbCrudService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

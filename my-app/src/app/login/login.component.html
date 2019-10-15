@@ -19,12 +19,18 @@
     </div>
 </ng-template>
 <ng-template #register>
-        <div class="allSides mfont" style="margin: auto; position: fixed;z-index: 2;left:600;top:180;text-align: center; height:500px ;">
-                <h2>Register</h2>
-                <br>
-                UserName<br><input type="text" id="uname" [(ngModel)]="uname"><br><br>
-                Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
-                Confirm Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
-                <input type="button" id="btn1" value="Submit" (click)="register_user()">
-        </div>
+    <div class="allSides mfont"
+        style="margin: auto; position: fixed;z-index: 2;left:600;top:180;text-align: center; height:500px ;">
+        <h2>Register</h2>
+        <div *ngIf="!risValid; then rerror"></div>
+        <ng-template #rerror>
+            <h5 style="color: red;"> {{msg}} </h5>
+        </ng-template>
+        <br>
+        UserName<br><input type="text" id="uname" [(ngModel)]="runame"><br><br>
+        Password<br><input type="text" id="pass" [(ngModel)]="rpassword"><br><br>
+        Confirm Password<br><input type="text" id="pass" [(ngModel)]="rcpassword"><br><br>
+        <input type="button" id="btn1" value="Submit" (click)="register_user()"> &nbsp;
+        <input type="button" id="btn2" value="Back" (click)="mlogin()">
+    </div>
 </ng-template>

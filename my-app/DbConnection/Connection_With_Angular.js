@@ -69,12 +69,18 @@ app.post('/details/:dbn', function (req, res) {
         res.send(docs);
     })
 })
-app.post('/insert/:dbn', function (req, res) {
+app.post('/login/:dbn', function (req, res) {
     dbset1(req.params.dbn)
     var o = JSON.parse(JSON.stringify(req.body))
     console.log(o.name + o.pass)
     var tem = { check: 'f' }
     m.find({ name: o.name, Password: o.pass }, function (err, docs) {
+        console.log(docs[0]._id)
+        if(docs[0]._id=='5da5be0aaabcd103b40be58d')
+        {
+            res.send(tem)
+            res.end();
+        }
         if (docs.length == 0) {
             res.send(tem)
             res.end();
@@ -85,6 +91,16 @@ app.post('/insert/:dbn', function (req, res) {
             res.end();
         }
     })
+})
+app.post('/insert/:dbn',function(req,res){
+    dbset1(req.params.dbn)
+    var o = JSON.parse(JSON.stringify(req.body))
+    db.collection('User_details').insertOne({ name: o.name, Password: o.pass },function(err)
+    {
+        if(err) throw err
+    })
+    res.send();
+    res.end();
 })
 
 app.listen(8000, function () {

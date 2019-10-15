@@ -20,9 +20,15 @@ export class DbCrudService {
     })
   }
 
-  public insertData(s:String,o:String):Observable<any>{
-      return this.http.post<any>("http://localhost:8000/insert/"+s,o,{
+  public loginData(s:String,o:String):Observable<any>{
+      return this.http.post<any>("http://localhost:8000/login/"+s,o,{
         headers:headers
       })
+  }
+
+  public InsertData(s:String,o:String):Observable<any>{
+    return this.http.post<any>("http://localhost:8000/insert/"+s,o,{
+      headers:headers
+    })
   }
 }

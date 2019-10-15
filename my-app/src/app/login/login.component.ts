@@ -3,8 +3,9 @@ import { setTimeout } from 'timers';
 import { animation } from '@angular/animations';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { DbCrudService } from '../db-crud.service';
-import{user} from '../admin/Model/User';
+import { user } from '../admin/Model/User';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -20,24 +21,32 @@ import { Router } from '@angular/router';
       })),
       transition('*<=>*', [animate('20000ms')])
     ]),
-    ]
+  ]
 })
 export class LoginComponent implements OnInit {
-  public isOn:boolean=false;
-  public uname:string;
-  public password:string;
-  public isValid:boolean=true;
-  public isLogin:boolean=true;
-  constructor(private crud:DbCrudService,private router: Router) { 
+  public isOn: boolean = false;
+  public uname: string;
+  public password: string;
+  public runame: string;
+  public rpassword: string;
+  public rcpassword: string;
+  public msg: String;
+  public isValid: boolean = true;
+  public isLogin: boolean = true;
+  public risValid: boolean = true;
+  constructor(private crud: DbCrudService, private router: Router,private cookieService: CookieService ) {
     console.log(router.url)
-    var t=router.url
+    var t = router.url
     console.log(t)
-    if(t==="/login")
-    {
-      this.isLogin=true;
+    if (t === "/login") {
+      this.isLogin = true;
+    }
+    else if(t==="/Register"){
+      this.isLogin = false;
     }
     else{
-      this.isLogin=false;
+      cookieService.delete('uname');
+      this.router.navigate(['/login'])
     }
   }
   ngOnInit() {
@@ -83,32 +92,48 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  public check_user():void{
+  public check_user(): void {
     //console.log("uname:"+this.uname +"Password:"+ this.password)
-     var uo=new user(this.uname,this.password)
-     
-     this.crud.insertData("User_details",JSON.stringify(uo)).subscribe(data=>{
-       //console.log(data)
-       if(data.check=='t')
-       {
-          //console.log("valid")
-          this.isValid=true;
-          $('#pl').show();
-          this.router.navigate(['/'])
-       }
-       else{
+    var uo = new user(this.uname, this.password)
+
+    this.crud.loginData("User_details", JSON.stringify(uo)).subscribe(data => {
+      console.log(data)
+      if (data.check == 't') {
+        //console.log("valid")
+        this.isValid = true;
+        $('#pl').show();
+        this.cookieService.set('uname',this.uname);
+        this.router.navigate(['/'])
+      }
+      else {
         //console.log("Invalid")
-          this.isValid=false;
-       }
-     });
-    
+        this.isValid = false;
+      }
+    });
+
   }
-  public Register():void
-  {
-      this.router.navigate(['/Register'])
+  public Register(): void {
+    this.router.navigate(['/Register'])
   }
-  public register_user():void{
+  public mlogin(): void {
+    this.router.navigate(['/login'])
+  }
+  public register_user(): void {
+    if(this.uname==null)
+    {
+      this.msg = "Please Enter a UserName"
+      this.risValid=false;
+    }
+    else if (this.rcpassword == this.rpassword) {
+      this.risValid=true;
+      var uo = new user(this.runame, this.rpassword)
+      this.crud.InsertData("User_details",JSON.stringify(uo)).subscribe(data=>console.log(data));
       this.router.navigate(['/login'])
+    }
+    else {
+      this.msg = "Enter correct Confirm Password"
+      this.risValid=false;
+    }
   }
 
 }

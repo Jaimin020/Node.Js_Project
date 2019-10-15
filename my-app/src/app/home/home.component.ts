@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MusicServiceService } from '../music-service.service';
 import { PlaylistComponent } from '../playlist/playlist.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,11 @@ export class HomeComponent implements OnInit {
   public mlist:any;
   audio:any;
   sharedData:SharedDataService;
-  constructor(list:SharedDataService,public dbcontext:MusicServiceService) {
+  public name:String;
+  constructor(list:SharedDataService,public dbcontext:MusicServiceService,private cookieService: CookieService) {
     this.sharedData=list;
-
+    this.name=cookieService.get('uname');
+    console.log(cookieService.get('uname'))
   }
   addsong(song){
    
