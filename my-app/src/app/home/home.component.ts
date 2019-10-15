@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MusicServiceService } from '../music-service.service';
-import { PlaylistComponent } from '../playlist/playlist.component';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
