@@ -33,7 +33,7 @@ export class PlaylistComponent implements OnInit {
     this.nowimg=this.playlist[this.i].Image;
     this.nowp= this.playlist[this.i].File;
     this.src_playing=this.playlist[this.i].Name;
-
+    
 
 
     this.sharedData.invokeEvent.subscribe(value => {

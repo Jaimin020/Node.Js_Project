@@ -1,0 +1,30 @@
+<app-playlist *ngIf="isOn"></app-playlist>
+<div>
+    <img class=main id=zoom1 style="z-index: 1;" src="./assets/images/backimg.jpg" alt="-">
+    <img class=main id=zoom2 style="z-index: -1;" src="./assets/images/back2.jpg" alt="-">
+</div>
+<div *ngIf="isLogin; then login else register"></div>
+<ng-template #login>
+    <div class="allSides mfont" style="margin: auto; position: fixed;z-index: 2;left:600;top:180;text-align: center;">
+        <h2>Login</h2>
+        <div *ngIf="!isValid; then error"></div>
+        <ng-template #error>
+            <h5 style="color: red;"> Invalid Username and Password </h5>
+        </ng-template>
+        <br>
+        UserName<br><input type="text" id="uname" [(ngModel)]="uname"><br><br>
+        Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
+        <input type="button" id="btn1" value="Login" (click)="check_user()"> &nbsp;
+        <input type="button" id="btn2" value="Register" (click)="Register()">
+    </div>
+</ng-template>
+<ng-template #register>
+        <div class="allSides mfont" style="margin: auto; position: fixed;z-index: 2;left:600;top:180;text-align: center; height:500px ;">
+                <h2>Register</h2>
+                <br>
+                UserName<br><input type="text" id="uname" [(ngModel)]="uname"><br><br>
+                Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
+                Confirm Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
+                <input type="button" id="btn1" value="Submit" (click)="register_user()">
+        </div>
+</ng-template>

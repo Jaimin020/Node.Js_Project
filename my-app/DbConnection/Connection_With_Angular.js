@@ -24,13 +24,12 @@ app.use((req, res, next) => {
 var m;
 //Model intialize
 var User_details = new mongoose.Schema({
-    _id: Number,
     name: String,
-    Password: Number
+    Password: String
 }, { collection: 'User_details' });
-var ud=mongoose.model("ud", User_details);
-var Music_details= new mongoose.Schema({
-    Music_id:String,
+var ud = mongoose.model("ud", User_details);
+var Music_details = new mongoose.Schema({
+    Music_id: String,
     Name: String,
     File: String,
     Image: String,
@@ -42,15 +41,14 @@ var Music_details= new mongoose.Schema({
     length: Number,
     Type: String
 }, { collection: 'Music_details' });
-var md=mongoose.model("md", Music_details);
+var md = mongoose.model("md", Music_details);
 
 function dbset1(name) {
-    console.log("in dbset1"+"+"+name)
+    console.log("in dbset1" + "+" + name)
     if (name == "User_details") {
         m = ud
     }
-    else if(name=="Music_details")
-    {
+    else if (name == "Music_details") {
         m = md
     }
 }
@@ -69,6 +67,23 @@ app.post('/details/:dbn', function (req, res) {
         if (err) throw err;
         console.log(docs);
         res.send(docs);
+    })
+})
+app.post('/insert/:dbn', function (req, res) {
+    dbset1(req.params.dbn)
+    var o = JSON.parse(JSON.stringify(req.body))
+    console.log(o.name + o.pass)
+    var tem = { check: 'f' }
+    m.find({ name: o.name, Password: o.pass }, function (err, docs) {
+        if (docs.length == 0) {
+            res.send(tem)
+            res.end();
+        }
+        else {
+            tem.check='t';
+            res.send(tem)
+            res.end();
+        }
     })
 })
 

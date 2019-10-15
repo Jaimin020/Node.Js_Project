@@ -12,6 +12,8 @@ import { SharedDataService } from './shared-data.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { DbCrudService } from './db-crud.service';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,12 +21,15 @@ import { DbCrudService } from './db-crud.service';
     HomeComponent,
     ListComponent,
     PlaylistComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [SharedDataService,DbCrudService],
   bootstrap: [AppComponent]
