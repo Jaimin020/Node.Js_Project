@@ -33,6 +33,7 @@ export class PlaylistComponent implements OnInit {
     this.sharedData.invokeEvent.subscribe(value => {
       if(value === 'someVal'){
        this.loadSong(); 
+       this.playp(null);
      }
     });
     // this.audio.src=this.nowp;
@@ -59,7 +60,7 @@ export class PlaylistComponent implements OnInit {
     this.sharedData.nowPi=this.i;
     this.nowp=this.sharedData.sharedplaylist[ this.i].File;
     this.audio.attr('src', this.nowp);
-    $("#playing").trigger("play");
+   // $("#playing").trigger("play");
     //var src=$("playsource");
    // console.log(src);
    // this.audio.play();
@@ -92,13 +93,13 @@ export class PlaylistComponent implements OnInit {
  }
 pausp(event) {
   this.audio=event;
-  this.audio.pause();
+  $("#playing").trigger("pause"); 
   console.log(this.nowp);
 }
 
 playp(event) {
-  this.audio=event;
-  this.audio.play();
+  this.audio=$("#playing");
+  $("#playing").trigger("play");  
   console.log(this.nowp);
 }
  previousp(event) {

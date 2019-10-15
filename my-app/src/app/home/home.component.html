@@ -157,7 +157,7 @@
   <div class="pagination">
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#hi')" class="centerVertical scrollBtn" alt="">
     <div id="hi" class="scrollview noScrolBar">
-      <span *ngFor="let music of musiclist">
+      <span *ngFor="let music of musiclist.reverse() ">
         <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
