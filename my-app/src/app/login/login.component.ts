@@ -119,7 +119,7 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/login'])
   }
   public register_user(): void {
-    if(this.uname==null)
+    if(this.runame==null)
     {
       this.msg = "Please Enter a UserName"
       this.risValid=false;
