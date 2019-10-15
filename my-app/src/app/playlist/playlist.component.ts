@@ -26,6 +26,7 @@ export class PlaylistComponent implements OnInit {
  sharedData:SharedDataService;
 
   constructor(data1:SharedDataService ) { 
+    
     this.sharedData=data1;
     this.playlist =  data1.sharedplaylist;
     this.i=data1.nowPi;
