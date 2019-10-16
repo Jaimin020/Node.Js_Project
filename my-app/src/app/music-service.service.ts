@@ -11,7 +11,7 @@ class Imusic{
   Gener: String;
   Music_count: Number;
   Artist: any;
-  Time_stamp: Date;
+  Time_stamp:  Number;
   Quility: Number;
   length: Number;
   Type: String

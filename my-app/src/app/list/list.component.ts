@@ -39,6 +39,69 @@ export class ListComponent implements OnInit {
         });
       });
 
+    }else if(this.charts.includes("Hollywood")){
+
+      this.dbcontext.getMusic().subscribe(x=>{
+        x.forEach(e => {
+          if(e.Type=="English") 
+          {
+            this.musiclist.push(e);
+          }
+        });
+      });
+
+    }else if(this.charts.includes("Today's")){
+      var i=0;
+      this.dbcontext.getMusic().subscribe(x=>{
+        x.forEach(e => {
+          i++;
+          if(i<=10) 
+          {
+            this.musiclist.push(e);
+          }
+        });
+      });
+
+    }else if(this.charts.includes("Zang")){
+      var i=1;
+      this.dbcontext.getMusic().subscribe(x=>{
+        x.forEach(e => {
+          if(i<=10 && e.Music_count>200) 
+          {
+             i++;
+            this.musiclist.push(e);
+          }
+        });
+      });
+
+    }else if(this.charts.includes("US's")){
+      var i=1;
+      this.dbcontext.getMusic().subscribe(x=>{
+        x.forEach(e => {
+          if(i<=10 && e.Music_count>200 && e.Type=="English"  ) 
+          {
+             i++;
+            this.musiclist.push(e);
+          }
+        });
+      });
+      
+
+    }else if(this.charts.includes("New Realeases")){
+      var i=1;
+      this.dbcontext.getMusic().subscribe(x=>{
+        x.sort((c,y)=>{
+          var q:Number=c.Time_stamp;
+          var w :Number= y.Time_stamp;
+
+          return (w.valueOf()-q.valueOf())}).forEach(e => {
+          if( i<=10) 
+          {
+             i++;
+            this.musiclist.push(e);
+          }
+        });
+      });
     }
   }
 
