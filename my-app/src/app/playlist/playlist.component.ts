@@ -55,10 +55,9 @@ export class PlaylistComponent implements OnInit {
   loadSong(){
   //  this.nextp($("#playing"));
     this.audio=$("#playing");
-    console.log(this.audio);
+  //  console.log(this.audio);
     this.i=this.sharedData.nowPi;
-    this.sharedData.nowPi=this.i;
-    this.nowp=this.sharedData.sharedplaylist[ this.i].File;
+    this.nowp=this.sharedData.sharedplaylist[this.i].File;
     this.audio.attr('src', this.nowp);
    // $("#playing").trigger("play");
     //var src=$("playsource");
@@ -66,7 +65,6 @@ export class PlaylistComponent implements OnInit {
    // this.audio.play();
     this.nowimg=this.sharedData.sharedplaylist[this.i].Image;
     this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
-
     console.log("Song loaded");
   }
   nextp(event) {
@@ -80,27 +78,25 @@ export class PlaylistComponent implements OnInit {
       this.i=this.sharedData.length-1;
     }
     this.nowp=this.sharedData.sharedplaylist[this.i].File;
-    
+
     this.audio.attr('src', this.nowp);
+    
     this.audio.trigger("play");
-   //event.load();
-    //event.play();
     
     this.nowimg=this.sharedData.sharedplaylist[this.i].Image;
     this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
-    console.log(this.sharedData.sharedplaylist);
+    console.log(this.sharedData.sharedplaylist[this.i].Name);
     console.log(this.i);
  }
 pausp(event) {
-  this.audio=event;
+  this.audio=$("#playing");
   $("#playing").trigger("pause"); 
-  console.log(this.nowp);
+ 
 }
 
 playp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("play");  
-  console.log(this.nowp);
 }
  previousp(event) {
   this.audio=$("#playing");
@@ -108,20 +104,13 @@ playp(event) {
   console.log($("#"+this.sharedData.nowPi));
   
   this.i=(this.i+1)%(this.sharedData.length);
-
     console.log(this.i);
     this.sharedData.nowPi=this.i;
     this.nowp=this.playlist[this.sharedData.nowPi].File;
     this.nowimg=this.playlist[this.i].Image;
-    // this.audio.src=this.nowp;
-    // this.audio.load();
-    // this.audio.play();
-    
     this.audio.attr('src', this.nowp);
     this.audio.trigger("play");
     this.src_playing =this.playlist[this.i].Name;
-    //console.log(this.sharedData.sharedplaylist);
-   // console.log(this.i);
 }
 removesong(index)
 {

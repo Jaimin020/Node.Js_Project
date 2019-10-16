@@ -26,25 +26,24 @@
     <nav aria-label="breadcrumb"  >
         <ol class="breadcrumb" style="background-color:transparent;">
           <li class="breadcrumb-item"><a href="#"  routerLink="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">top List</li>
+          <li class="breadcrumb-item active" aria-current="page">Top Charts</li>
         </ol>
       </nav>
     <div class="jumbotron jumbotron-fluid text-white " style="background-color:transparent;padding-bottom: 2em;">
         <div class="container">
-            <h1 class="display-4">Top List</h1>
+            <h1 class="display-4">Top Charts</h1>
             <br>
-            <div class="btn btn-primary btn-lg rounded-pill"> <img class="playicon rounded"
-                    src="../../assets/resources/play-white.png"> Play All</div>
+          
         </div>
     </div>
 
     <div id="contentid" class="card-columns">
-        <div *ngFor="let music of musiclist" class="card text-white dark-theme-sid-color bounceIn"> 
+        <div *ngFor="let music of chartsList" class="card text-white dark-theme-sid-color bounceIn"> 
             <img class="figure-img  mcardplay" style="top:2.5em;left: 2.5em;" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
             <img src="{{music.Image}}" style="height: 10em;" class="card-img-top cover">
             <div class="card-body">
                 <h5 class="card-title">{{music.Name}}</h5>
-                <p class="card-text">{{music.Artist}}</p>
+    
             </div>
         </div>
     </div>
