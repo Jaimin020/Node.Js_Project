@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/Music", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/ZangDb", { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', mongoConnected);

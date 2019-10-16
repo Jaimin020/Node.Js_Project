@@ -91,7 +91,6 @@ export class PlaylistComponent implements OnInit {
 pausp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("pause"); 
- 
 }
 
 playp(event) {
@@ -126,7 +125,6 @@ removesong(index)
 
 }
   ngOnInit() {
-
       this.db.getMusic().subscribe(x=>{
         this.sharedData.sharedplaylist=x;
         this.playlist =  this.sharedData.sharedplaylist;
@@ -139,7 +137,8 @@ removesong(index)
         this.src_playing=this.playlist[this.i].Name;
         this.loadSong();
       });
-      
+  
+
       console.log(this.audio);
   }
 }

@@ -1,3 +1,4 @@
+
 <div class="side noScrolBar  overflow-auto  fixed-bottom dark-theme-sid-color shadow ">
     <div>
         <div class="dark-theme-sid-color sticky-top shadow ">
@@ -10,18 +11,20 @@
                   
                 <br>
                 </div>
-                <p class="text-white">{{src_playing}}</p>
-            <br>
-            <audio #play (ended)="nextp(play)"  id="playing" controls>
+                <p class="text-white">{{src_playing}}     </p>
+                <div class="d-flex justify-content-center">
+            <audio #play class="audio" (ended)="nextp(play)" id="playing" controls>
                 <source id="playsource" src="{{nowp}}">
                 </audio>
+            </div>
             <div class="d-flex justify-content-center">
-                    <button (click) = "previousp(play)" ><<</button> 
-                    <button (click) = "pausp(play)" >||</button> 
-                    <button (click) = "playp(play)" ><></button> 
-        <button (click) = "nextp(play)" >>></button>
-                   
-            
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" (click) = "previousp(play)" class="btn btn-secondary"><<</button>
+                            <button type="button" (click) = "pausp(play)" class="btn btn-secondary">||</button>
+                            <button type="button"(click) = "playp(play)" class="btn btn-secondary"><></button>
+                            <button type="button" (click) = "nextp(play)"  class="btn btn-secondary">>></button>
+                          </div>
+          
                 <!-- <audio controls   [innerHTML]="{{src_playing}}"> 
                    <source src="{{nowp}}"  type="audio/mp3">
                     Your browser does not support the audio element.
@@ -37,7 +40,7 @@
                             <th scope="row"><img class="icon rounded-sm cover "
                                     src="{{music.Image}}"></th>
                             <td>{{music.Name}}</td>
-                            <td>{{music.Artist}}</td>
+                          
                             <td><img class="hover-ope crossbtn" (click)="removesong(i)" src="../../assets/resources/icons8x.png"></td>
                         </tr>
                     </tbody>
