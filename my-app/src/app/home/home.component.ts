@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from '../shared-data.service';
 import { MusicServiceService } from '../music-service.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
   public arr=new Array();
   sharedData:SharedDataService;
   public name:String;
-  constructor(list:SharedDataService,public dbcontext:MusicServiceService,private cookieService: CookieService) {
+  constructor(list:SharedDataService,
+    public dbcontext:MusicServiceService,
+    private cookieService: CookieService,private router: Router) {
     this.sharedData=list;
     
     this.name=cookieService.get('uname');
@@ -32,12 +35,14 @@ export class HomeComponent implements OnInit {
   addchart(chart){
     console.log(chart);
     console.log(this.sharedData.sharedplaylist);
+
     this.dbcontext.getMusic().subscribe(x=>{
       x.forEach(e => {
         if(e.Type=="English")
         {this.arr.push(e);}
       });
       console.log(this.arr);
+       
     var i=this.sharedData.nowPi;
     this.arr.forEach(x => { this.sharedData.sharedplaylist.splice(i, 0, x);
       i++;
@@ -47,6 +52,7 @@ export class HomeComponent implements OnInit {
        this.sharedData.nowPi=i-1;
        console.log(this.sharedData.sharedplaylist)
        this.sharedData.callMethodOfSecondComponent(); 
+        
     })
     
     // this.sharedData.callMethodOfSecondComponent(); 
@@ -61,7 +67,12 @@ export class HomeComponent implements OnInit {
     this.sharedData.nowPi=this.sharedData.nowPi;
     this.sharedData.callMethodOfSecondComponent(); 
   
-  } 
+  }
+  topCharts(chart){
+    console.log(chart);
+    
+    this.router.navigate(['/list', chart.Name]);
+  }
    ngOnInit() {
     
   }

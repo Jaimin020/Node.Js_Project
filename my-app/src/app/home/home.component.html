@@ -115,9 +115,9 @@
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#topList')" class="centerVertical scrollBtn"
       alt="">
       <div id="topList" class="scrollview noScrolBar">
-        <span *ngFor="let music of chartsList">
-          <figure class="figure  MusiccardHover fadeIn">
-              <img class="figure-img  Musiccard mcardplay" (click)="addchart(music)" src="../../assets/resources/icons8-circled-play.png">
+        <span *ngFor="let music of chartsList" >
+          <figure class="figure  MusiccardHover fadeIn" (click)="topCharts(music)">
+              <img class="figure-img  Musiccard mcardplay" (click)="addchart(music);$event.stopPropagation()" src="../../assets/resources/icons8-circled-play.png">
             <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
               alt="sow">
             <figcaption class="figure-caption ">{{music.Name}}</figcaption>

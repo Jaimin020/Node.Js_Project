@@ -125,11 +125,17 @@ removesong(index)
 
 }
   ngOnInit() {
+
+
+
+  
       this.db.getMusic().subscribe(x=>{
         this.sharedData.sharedplaylist=x;
+       // this.sharedData.sharedplaylist.splice(this.sharedData.length)
+        console.log(this.sharedData.sharedplaylist);
         this.playlist =  this.sharedData.sharedplaylist;
         this.i=this.sharedData.sharedplaylist.length-1;
-        this.sharedData.nowPi=this.i;        
+        this.sharedData.nowPi=this.i==-1?0:this.i;        
         this.length=this.sharedData.sharedplaylist.length;
         this.sharedData.length=this.length;
         this.nowimg=this.playlist[this.i].Image;
@@ -137,8 +143,8 @@ removesong(index)
         this.src_playing=this.playlist[this.i].Name;
         this.loadSong();
       });
-  
 
       console.log(this.audio);
+   
   }
 }
