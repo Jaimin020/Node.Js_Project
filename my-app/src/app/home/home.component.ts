@@ -32,15 +32,23 @@ export class HomeComponent implements OnInit {
   addchart(chart){
     console.log(chart);
     console.log(this.sharedData.sharedplaylist);
-    this.sharedData.sharedplaylist.forEach(x => {
-      if(x.Type=="English")
-      {this.arr.push(x);}
-    });
-    console.log(this.arr);
-    // this.sharedData.sharedplaylist=new Array();
-    // this.arr.forEach(x => {this.sharedData.sharedplaylist.push(x);
-    // });
-   
+    this.dbcontext.getMusic().subscribe(x=>{
+      x.forEach(e => {
+        if(e.Type=="English")
+        {this.arr.push(e);}
+      });
+      console.log(this.arr);
+    var i=this.sharedData.nowPi;
+    this.arr.forEach(x => { this.sharedData.sharedplaylist.splice(i, 0, x);
+      i++;
+       });
+  
+       this.sharedData.length= this.sharedData.length+this.arr.length;
+       this.sharedData.nowPi=i-1;
+       console.log(this.sharedData.sharedplaylist)
+       this.sharedData.callMethodOfSecondComponent(); 
+    })
+    
     // this.sharedData.callMethodOfSecondComponent(); 
   }
   addsong(song){
