@@ -31,8 +31,13 @@ export class PlaylistComponent implements OnInit {
     this.sharedData=data1;
 
     this.sharedData.invokeEvent.subscribe(value => {
-      if(value === 'someVal'){
+      if(value === "load"){
        this.loadSong(); 
+       this.playp(null);
+     }
+     else if(value == "pause"){
+       this.pausp(null);
+     }else if(value=="play"){
        this.playp(null);
      }
     });

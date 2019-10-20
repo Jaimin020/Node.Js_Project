@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
        this.sharedData.length= this.sharedData.length+this.arr.length;
        this.sharedData.nowPi=i-1;
        console.log(this.sharedData.sharedplaylist)
-       this.sharedData.callMethodOfSecondComponent(); 
+       this.sharedData.callMethodOfSecondComponent("load"); 
         
     })
     
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
 
     this.sharedData.length= this.sharedData.length+1;
     this.sharedData.nowPi=this.sharedData.nowPi;
-    this.sharedData.callMethodOfSecondComponent(); 
+    this.sharedData.callMethodOfSecondComponent("load"); 
   
   }
   topCharts(chart){

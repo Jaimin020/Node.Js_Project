@@ -27,7 +27,9 @@
         </thead>
         <tbody id="List">
             <tr *ngFor="let music of musiclist ; index as i" >
-                <th scope="row">{{i+1}} <img class="playicon" src="../../assets/resources/play-white.png"></th>
+                <th scope="row">{{i+1}}
+                        <!-- *ngIf="music.Music_id== sharedData.sharedplaylist[sharedData.mowPi].Music_id"  -->
+                    <img #icon class="playicon" (click)="playsong(music,icon)" src="../../assets/resources/play-white.png"></th>
                 <td>{{music.Name}}</td>
                 <td>{{music.Artist}}</td>
                 <td>{{music.length}}</td>

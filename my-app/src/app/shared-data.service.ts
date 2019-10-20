@@ -10,9 +10,10 @@ export class SharedDataService {
   sharedplaylist;// = JSON.parse(this.data);
   length;//=this.sharedplaylist.length;
   nowPi;//=this.sharedplaylist.length-1;
+  nowPlaying:any;
   invokeEvent: Subject<any> = new Subject();
-  callMethodOfSecondComponent() { 
-    this.invokeEvent.next("someVal")      
+  callMethodOfSecondComponent(someVal) { 
+    this.invokeEvent.next(someVal);      
   }
   constructor() { }
 }
