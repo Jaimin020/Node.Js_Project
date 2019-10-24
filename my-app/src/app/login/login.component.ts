@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     }
     else{
       cookieService.delete('uname');
-      this.router.navigate(['/login'])
+      this.router.navigate(['/'])
     }
   }
   ngOnInit() {
@@ -124,8 +124,9 @@ export class LoginComponent implements OnInit {
       this.msg = "Please Enter a UserName"
       this.risValid=false;
     }
-    else if (this.rcpassword == this.rpassword) {
+    else if (this.rcpassword == this.rpassword && (this.rcpassword!=undefined && this.rpassword!=undefined)) {
       this.risValid=true;
+      console.log(this.rpassword)
       var uo = new user(this.runame, this.rpassword)
       this.crud.InsertData("User_details",JSON.stringify(uo)).subscribe(data=>console.log(data));
       this.router.navigate(['/login'])

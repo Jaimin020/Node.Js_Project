@@ -13,7 +13,7 @@
         </ng-template>
         <br>
         UserName<br><input type="text" id="uname" [(ngModel)]="uname"><br><br>
-        Password<br><input type="text" id="pass" [(ngModel)]="password"><br><br>
+        Password<br><input type="password" id="pass" [(ngModel)]="password"><br><br>
         <input type="button" id="btn1" value="Login" (click)="check_user()"> &nbsp;
         <input type="button" id="btn2" value="Register" (click)="Register()">
     </div>
@@ -28,8 +28,8 @@
         </ng-template>
         <br>
         UserName<br><input type="text" id="uname" [(ngModel)]="runame"><br><br>
-        Password<br><input type="text" id="pass" [(ngModel)]="rpassword"><br><br>
-        Confirm Password<br><input type="text" id="pass" [(ngModel)]="rcpassword"><br><br>
+        Password<br><input type="password" id="pass" [(ngModel)]="rpassword"><br><br>
+        Confirm Password<br><input type="password" id="pass" [(ngModel)]="rcpassword"><br><br>
         <input type="button" id="btn1" value="Submit" (click)="register_user()"> &nbsp;
         <input type="button" id="btn2" value="Back" (click)="mlogin()">
     </div>

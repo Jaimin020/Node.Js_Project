@@ -15,14 +15,11 @@
             <tr>
                 <th>UserName</th>
                 <th>Password</th>
-                <th>Role</th>
             </tr>
             <tr *ngFor="let u of d">
                 <td>{{u.name}}</td>
                 <td>{{u.Password}}</td>
-                <td>{{u.role}}</td>
-                <td><a href="/admin/{{tn}}/Edit/{{u._id}}">Edit</a> | <a href="/admin/{{tn}}/Delete/{{u._id}}">Delete</a> | <a
-                        href="/admin/{{tn}}/madmin/{{u._id}}">Make admin</a></td>
+                <td><a href="/admin/{{tn}}/Edit/{{u._id}}">Edit</a> | <a href="/admin/{{tn}}/Delete/{{u._id}}">Delete</a></td>
             </tr>
         </table>
         <div *ngIf="isedit; then medit"></div>
@@ -40,7 +37,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="button" class="btn btn-primary" value="Edit" (click)="Edit_data()">
+                        <input type="button" class="btn btn-primary" value="Submit" (click)="Edit_data()">
                     </td>
                 </tr>
             </table>

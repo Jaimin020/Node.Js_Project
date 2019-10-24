@@ -12,14 +12,13 @@ export class DbCrudService {
   constructor(private http: HttpClient) { }
   
   public getData(s:String):Observable<any>{
-    console.log(s)
     var a:any;
-    
     return this.http.post<any>("http://localhost:8000/details/"+s,{
       headers:headers
-    })
+    });
   }
 
+  
   public loginData(s:String,o:String):Observable<any>{
       return this.http.post<any>("http://localhost:8000/login/"+s,o,{
         headers:headers
