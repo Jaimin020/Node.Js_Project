@@ -1,45 +1,49 @@
 <div>
-    <table class=".table-striped-dark">
+    <table class="table table-dark table-striped">
         <tr>
-            <td style="color: aliceblue;">Please select a Table:-</td><br>
+            <th>Table Name</th>
         </tr>
-        <tr>
-            <td>
-                <select id="m">
-                    <option *ngFor="let sn of sns">
-                        {{sn}}
-                    </option>
-                </select>
-            </td>
+        <tr *ngFor="let table of sns">
+            <td>{{table}}</td>
+            <td><a href="/admin/{{table}}">open</a></td>
         </tr>
-        <tr>
-            <td style="color: aliceblue;">Please select a Operation:-</td><br>
-        </tr>
-        <tr>
-            <td>
-                <select id="o">
-                    <option *ngFor="let so of sos">
-                        {{so}}
-                    </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="button" value="Go" (click)="on_click()">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div *ngIf = "istrue; then thenblock" ></div>
-                <ng-template #thenblock >
-                    <div style="color: aliceblue;">
-                    Name:-<input type="text" value="name"><br>
-                    Password:-<input type="password" value="password"><br>
-                    <input type="button" value="Insert">
-                </div>
-                </ng-template>
-            </td>
-        </tr>
-    </table>
+    </table><br>
+    <h3 class="text-primary">{{tn}}</h3><br>
+    <div *ngIf="isud; then data"></div>
+    <ng-template #data>
+        <table class="table table-dark table-striped">
+            <tr>
+                <th>UserName</th>
+                <th>Password</th>
+                <th>Role</th>
+            </tr>
+            <tr *ngFor="let u of d">
+                <td>{{u.name}}</td>
+                <td>{{u.Password}}</td>
+                <td>{{u.role}}</td>
+                <td><a href="/admin/{{tn}}/Edit/{{u._id}}">Edit</a> | <a href="/admin/{{tn}}/Delete/{{u._id}}">Delete</a> | <a
+                        href="/admin/{{tn}}/madmin/{{u._id}}">Make admin</a></td>
+            </tr>
+        </table>
+        <div *ngIf="isedit; then medit"></div>
+        <ng-template #medit>
+            <table class="table table-dark table-striped">
+                <tr>
+                    <td>
+                        <h4 class="text-primary">UserName</h4><input type="text" class="form-control" value="{{uo.name}}" [(ngModel)]="uname">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 class="text-primary">Password</h4><input type="text" class="form-control" value="{{uo.Password}}" [(ngModel)]="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="btn btn-primary" value="Edit" (click)="Edit_data()">
+                    </td>
+                </tr>
+            </table>
+        </ng-template>
+    </ng-template>
 </div>

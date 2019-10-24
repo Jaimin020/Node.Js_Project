@@ -4,7 +4,7 @@ var body_parser = require("body-parser");
 const mongoose = require('mongoose');
 
 //intialize connection
-mongoose.connect("mongodb://localhost:27017/Music");
+mongoose.connect("mongodb://localhost:27017/ZangDb");
 var db = mongoose.connection;
 
 //Database connnection checking
@@ -25,7 +25,7 @@ var m;
 //Model intialize
 var User_details = new mongoose.Schema({
     name: String,
-    Password: String
+    Password: String,
 }, { collection: 'User_details' });
 var ud = mongoose.model("ud", User_details);
 var Music_details = new mongoose.Schema({
@@ -70,17 +70,17 @@ app.post('/details/:dbn', function (req, res) {
     })
 })
 app.post('/login/:dbn', function (req, res) {
-    dbset1(req.params.dbn)
+    //dbset1(req.params.dbn)
     var o = JSON.parse(JSON.stringify(req.body))
-    console.log(o.name + o.pass)
+    console.log(o)
     var tem = { check: 'f' }
-    m.find({ name: o.name, Password: o.pass }, function (err, docs) {
-        console.log(docs[0]._id)
+    ud.find({ name: o.name, Password: o.Password }, function (err, docs) {
+        /*console.log(docs[0])
         if(docs[0]._id=='5da5be0aaabcd103b40be58d')
         {
             res.send(tem)
             res.end();
-        }
+        }*/
         if (docs.length == 0) {
             res.send(tem)
             res.end();
@@ -95,14 +95,59 @@ app.post('/login/:dbn', function (req, res) {
 app.post('/insert/:dbn',function(req,res){
     dbset1(req.params.dbn)
     var o = JSON.parse(JSON.stringify(req.body))
-    db.collection('User_details').insertOne({ name: o.name, Password: o.pass },function(err)
+    db.collection(req.params.dbn).insertOne(o,function(err)
     {
         if(err) throw err
     })
     res.send();
     res.end();
 })
+app.post('/id_d/:dbn/:id',function(req,res){
+    dbset1(req.params.dbn)
+    m.find({_id:req.params.id},function(err,data){
+        if(err) throw err
+        res.send(data)
+    })
+})
+app.post('/Edito/:dbn/:id',function(req,res){
+    dbset1(req.params.dbn)
+    var o = JSON.parse(JSON.stringify(req.body))
+    m.findOneAndUpdate({_id:req.params.id},o,{upsert:true}, function(err, doc){
+        if(err) throw err
+        res.send();
+    })
+})
+app.post('/delete_d/:dbn/:id',function(req,res){
+    dbset1(req.params.dbn)
+    m.remove({_id:req.params.id},function(err){
+        if(err) throw err
+        res.send();
+    })
+})
 
+var schema = mongoose.Schema
+var Song_Details = new schema(
+    { Music_id:String,
+        Name: String,
+       
+    }
+)
+var songs = mongoose.model("songs", Song_Details);
+console.log(songs.find(function (err,so){
+console.log(so);
+}));
+app.get("/songs", (req, res) => {
+    songs.find( function(err, song) {
+        if (err) {
+            res.status(400);
+            res.send("Unable to find names");
+        }
+        else {
+            console.log("All employees returned");
+            res.send(song);
+        }
+    });
+});
 app.listen(8000, function () {
     console.log('Example app listening on port 8000!')
 })

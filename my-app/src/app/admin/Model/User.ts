@@ -1,8 +1,9 @@
 export class user{
     public name:string
-    public pass:string
+    public Password:string
+    public role:string
     constructor(name:string,pass:string){
         this.name=name;
-        this.pass=pass;
+        this.Password=pass;
     }
 }

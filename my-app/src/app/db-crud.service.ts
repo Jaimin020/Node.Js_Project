@@ -31,4 +31,22 @@ export class DbCrudService {
       headers:headers
     })
   }
+
+  public IdData(s:String,i:String):Observable<any>{
+    return this.http.post<any>("http://localhost:8000/id_d/"+s+"/"+i,{
+      headers:headers
+    })
+  }
+
+  public EditData(s:String,i:String,o:String):Observable<any>{
+    return this.http.post<any>("http://localhost:8000/Edito/"+s+"/"+i,o,{
+      headers:headers
+    })
+  }
+
+  public DeleteData(s:String,i:String):Observable<any>{
+    return this.http.post<any>("http://localhost:8000/delete_d/"+s+"/"+i,{
+      headers:headers
+    })
+  }
 }

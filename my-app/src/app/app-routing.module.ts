@@ -9,6 +9,8 @@ const routes: Routes = [
   {path:"",component:HomeComponent},
   {path:"charts",component:ChartsComponent},
   {path:"list/:chart",component:ListComponent},
+  {path:"admin/:tn",component:AdminComponent},
+  {path:"admin/:tn/:op/:id",component:AdminComponent},
   {path:"admin",component:AdminComponent},
   {path:"login",component:LoginComponent},
   {path:"Register",component:LoginComponent},
