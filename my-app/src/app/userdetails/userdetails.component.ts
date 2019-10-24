@@ -39,7 +39,10 @@ export class UserdetailsComponent implements OnInit {
       var eo = new user(this.uo.name, this.pass)
       this.crud.EditData("User_details", this.uo._id, JSON.stringify(eo)).subscribe(data =>{ 
         console.log(data)
-        this.router.navigate(['/user_details'])
+        this.uo.Password=this.pass;
+        //this.router.navigate(['/user_details'])
+        //window.location.reload();
+        this.isedit=false;
       });
     }
     else{
@@ -55,7 +58,10 @@ export class UserdetailsComponent implements OnInit {
     this.cookieService.set('uname',this.nname)
       this.crud.EditData("User_details", this.uo._id, JSON.stringify(nuo)).subscribe(data =>{ 
         console.log(data)
-        this.router.navigate(['/user_details'])
+        this.uo.name=this.nname;
+        this.isue=false;
+        //this.router.navigate(['/user_details'])
+       // window.location.reload();
       });
   }
 

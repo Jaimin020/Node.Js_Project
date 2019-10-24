@@ -9,6 +9,30 @@
         </tr>
     </table><br>
     <h3 class="text-primary">{{tn}}</h3><br>
+    <div class="accordion " id="accordionExample">
+        <div class="card bg-dark text-white" *ngFor="let music of musicD ; index as i">
+            <div class="card-header" id="{{i+1}}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed text-white" type="button" data-toggle="collapse"
+                    attr.data-target="#{{music.Name}}"    attr.aria-expanded="true" attr.aria-controls={{music.Name}}>
+                  {{i+1}}      {{music.Name}}
+                    </button>
+                </h2>
+            </div>
+            <div id="{{music.Name}}" class="collapse" attr.aria-labelledby="{{i+1}}" data-parent="#accordionExample">
+                <div class="card-body">
+                    <tr>Artist : {{music.Artist}}</tr>
+                    <tr>Gener : {{music.Gener}}</tr>
+                    <tr>Time Stamp  : {{music.Time_stamp}} </tr>
+                    <tr>Quility : {{music.Quility}} </tr>
+                    <tr>Type : {{music.Type}} </tr>
+
+                    <tr>Length  : {{music.length}}</tr>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div *ngIf="isud; then data"></div>
     <ng-template #data>
         <table class="table table-dark table-striped">
@@ -19,7 +43,8 @@
             <tr *ngFor="let u of d">
                 <td>{{u.name}}</td>
                 <td>{{u.Password}}</td>
-                <td><a href="/admin/{{tn}}/Edit/{{u._id}}">Edit</a> | <a href="/admin/{{tn}}/Delete/{{u._id}}">Delete</a></td>
+                <td><a href="/admin/{{tn}}/Edit/{{u._id}}">Edit</a> | <a
+                        href="/admin/{{tn}}/Delete/{{u._id}}">Delete</a></td>
             </tr>
         </table>
         <div *ngIf="isedit; then medit"></div>
@@ -27,12 +52,14 @@
             <table class="table table-dark table-striped">
                 <tr>
                     <td>
-                        <h4 class="text-primary">UserName</h4><input type="text" class="form-control" value="{{uo.name}}" [(ngModel)]="uname">
+                        <h4 class="text-primary">UserName</h4><input type="text" class="form-control"
+                            value="{{uo.name}}" [(ngModel)]="uname">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4 class="text-primary">Password</h4><input type="text" class="form-control" value="{{uo.Password}}" [(ngModel)]="password">
+                        <h4 class="text-primary">Password</h4><input type="text" class="form-control"
+                            value="{{uo.Password}}" [(ngModel)]="password">
                     </td>
                 </tr>
                 <tr>
@@ -43,4 +70,5 @@
             </table>
         </ng-template>
     </ng-template>
+
 </div>

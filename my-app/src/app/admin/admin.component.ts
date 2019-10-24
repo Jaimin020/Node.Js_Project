@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineAll } from 'rxjs/operators';
 import { user } from './Model/User';
 import { setTimeout } from 'timers';
+import { MusicServiceService } from '../music-service.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -20,9 +21,10 @@ export class AdminComponent implements OnInit {
   eu;
   public isud: boolean = false;
   public isedit: boolean = false;
-  constructor(private crud: DbCrudService, private route: ActivatedRoute, private router: Router) {
+  constructor(private crud: DbCrudService, private route: ActivatedRoute, private router: Router,public db:MusicServiceService) {
   }
   public d = [];
+  public musicD=[];
   public istrue: boolean = false;
   uo;
   ngOnInit() {
@@ -44,6 +46,7 @@ export class AdminComponent implements OnInit {
           this.isedit = true;
           this.Edit();
         }
+        
         if (this.op == "Delete") {
           //this.isud = false;
           this.crud.DeleteData(this.tn, this.id).subscribe(data => {
@@ -62,8 +65,14 @@ export class AdminComponent implements OnInit {
           this.crud.EditData(this.tn, this.id, JSON.stringify(u)).subscribe(data => console.log(data))
         }
       }
+      if (this.tn == "Music_details"){
+        this.db.getMusic().subscribe(x=>{
+          this.musicD=x;
+          console.log(x);
+      });
     }
   }
+}
   public sns = ["User_details", "Music_details"];
   public on_click(): void {
 
@@ -95,11 +104,12 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/admin/' + this.tn])})
   }
   public open_music():void{
-    this.crud.getData(this.tn).subscribe(data => {
-      console.log(data)
+    this.db.getMusic().subscribe(x=>{
+      this.musicD=x;
+      console.log(x);
+    });
       /*for (var i = 0; i < data.length; i++) {
         this.d[i] = data[i]
       }*/
-    })
   }
 }
