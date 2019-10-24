@@ -48,4 +48,10 @@ export class DbCrudService {
       headers:headers
     })
   }
+
+  public FindByName(s:String):Observable<any>{
+    return this.http.post<any>("http://localhost:8000/findbn/"+s,{
+      headers:headers
+    })
+  }
 }

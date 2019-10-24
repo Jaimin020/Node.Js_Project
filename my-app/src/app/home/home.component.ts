@@ -21,13 +21,23 @@ export class HomeComponent implements OnInit {
   public arr=new Array();
   sharedData:SharedDataService;
   public name:String;
+  public isLogin:boolean=true;
+  public isLogout:boolean=false;
   constructor(list:SharedDataService,
     public dbcontext:MusicServiceService,
     private cookieService: CookieService,private router: Router) {
     this.sharedData=list;
     
     this.name=cookieService.get('uname');
-    console.log(cookieService.get('uname'));
+    if(this.name==''){
+      this.isLogin=true;
+      this.isLogout=false;
+    }
+    else{
+      this.isLogin=false;
+      this.isLogout=true;
+    }
+    console.log(this.name);
 
     this.dbcontext.getMusic().subscribe(x => {
       this.musiclist=x;

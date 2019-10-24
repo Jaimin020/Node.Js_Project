@@ -8,13 +8,13 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="isLogin" class="nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/Register">Register</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="isLogout" class="nav-item">
         <a class="nav-link" href="/logout">Logout</a>
       </li>
       <!--<li class="nav-item dropdown">
@@ -29,7 +29,7 @@
         </div>
       </li>-->
       <li  class="nav-item active">
-        <a class="nav-link" href="#">{{name}}</a>
+        <a class="nav-link" href="/user_details">{{name}}</a>
       </li>
     </ul>
   </div>

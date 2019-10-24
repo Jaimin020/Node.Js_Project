@@ -15,6 +15,7 @@ import { DbCrudService } from './db-crud.service';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { CookieService } from 'ngx-cookie-service';
     ListComponent,
     PlaylistComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    UserdetailsComponent
     
   ],
   imports: [

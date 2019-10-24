@@ -94,4 +94,12 @@ export class AdminComponent implements OnInit {
     this.crud.EditData(this.tn, this.id, JSON.stringify(uo)).subscribe(data =>{ console.log(data)
       this.router.navigate(['/admin/' + this.tn])})
   }
+  public open_music():void{
+    this.crud.getData(this.tn).subscribe(data => {
+      console.log(data)
+      /*for (var i = 0; i < data.length; i++) {
+        this.d[i] = data[i]
+      }*/
+    })
+  }
 }

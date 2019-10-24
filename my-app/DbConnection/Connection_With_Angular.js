@@ -124,6 +124,12 @@ app.post('/delete_d/:dbn/:id',function(req,res){
         res.send();
     })
 })
+app.post('/findbn/:name',function(req,res){
+    ud.find({name:req.params.name},function(err,doc){
+        console.log(doc)
+        res.send(doc)
+    })
+})
 
 var schema = mongoose.Schema
 var Song_Details = new schema(
