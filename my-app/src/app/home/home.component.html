@@ -41,22 +41,17 @@
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      
       </ol>
       <div class="carousel-inner rounded">
-        <div class="carousel-item  carousel-item-small  active">
-          <img src="../assets/images/2d2da75168b8b3ae2b549b32157a568e.1000x1000x1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-item  carousel-item-small  active" (click)="topCharts( chartsList[1])">
+          <img src="../../assets/resources/c1.png" class="d-block w-100" alt="...">
 
 
         </div>
-        <div class="carousel-item carousel-item-small ">
-          <img src="../assets/images/Movie-Review-Sonu-Ke-Titu-Ki-Sweety-Movie.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-item carousel-item-small " (click)="topCharts( dailymix)">
+          <img src="../../assets/resources/c2.png" class="d-block w-100" alt="...">
 
-
-        </div>
-        <div class="carousel-item carousel-item-small ">
-
-          <img src="../assets/images/c05b3c4739a994bca85d932f6d6cb586.1000x1000x1.png" class="d-block w-100" alt="...">
 
         </div>
       </div>
@@ -77,21 +72,21 @@
         <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner rounded">
-        <div class="carousel-item  carousel-item-small  active">
-          <img src="../assets/images/2d2da75168b8b3ae2b549b32157a568e.1000x1000x1.jpg"
+        <div  class="carousel-item  carousel-item-small  active">
+          <img src="{{mlist[21].Image}}" (click)="addsong(mlist[21])"
             class="d-block w-100 carousel-item-small cover" alt="...">
 
 
         </div>
         <div class="carousel-item carousel-item-small ">
-          <img src="../assets/images/Movie-Review-Sonu-Ke-Titu-Ki-Sweety-Movie.jpg"
+          <img src="{{mlist[3].Image}}"(click)="addsong(mlist[3])"
             class="d-block w-100  carousel-item-small cover" alt="...">
 
 
         </div>
         <div class="carousel-item carousel-item-small ">
 
-          <img src="../assets/images/c05b3c4739a994bca85d932f6d6cb586.1000x1000x1.png"
+          <img src="{{mlist[19].Image}}"(click)="addsong(mlist[19])"
             class="d-block w-100 carousel-item-small cover" alt="...">
 
         </div>
@@ -129,14 +124,14 @@
       alt="">
   </div>
   <br><br>
-  <a href="#" routerLink="/list">
+  <a href="#" routerLink="/list/New Releases">
     <h5 class="theme-text-h4 text-secondary text-uppercase">New Release</h5>
   </a>
   <div class="pagination">
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#newList')" class="centerVertical scrollBtn"
       alt="">
     <div id="newList" class="scrollview noScrolBar">
-      <span *ngFor="let music of musiclist">
+       <span *ngFor="let music of  mlist  "> <!--| orderBy: ['Time_stamp']"> -->
        
         <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay"(click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
@@ -157,12 +152,12 @@
   <div class="pagination">
     <img src="../assets/resources/arrow_left.svg" onclick="rightscroll('#hi')" class="centerVertical scrollBtn" alt="">
     <div id="hi" class="scrollview noScrolBar">
-      <span *ngFor="let music of mlist.reverse() ">
+      <span *ngFor="let music of musiclist">
         <figure class="figure  MusiccardHover fadeIn">
             <img class="figure-img  Musiccard mcardplay" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
           <img src='{{music.Image}}' class="figure-img cover rounded Musiccard"
             alt="sow">
-          <figcaption class="figure-caption ">{{music.Name}}</figcaption>
+          <figcaption class="figure-caption ">{{music.Artist[0]}}</figcaption>
         </figure>
       </span>
       

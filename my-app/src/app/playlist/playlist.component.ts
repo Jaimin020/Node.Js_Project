@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Pipe, PipeTransform, ElementRef, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Pipe, PipeTransform, ElementRef, ViewContainerRef, HostListener } from '@angular/core';
 //import { $ } from 'protractor';
 import { Source } from 'webpack-sources';
 import * as $ from 'jquery';
@@ -7,6 +7,13 @@ import { eventNames } from 'cluster';
 
 import { SharedDataService } from '../shared-data.service';
 import { MusicServiceService } from '../music-service.service';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37,
+  SPAC_BAR = 32
+}
+
 @Pipe({ name: 'reverse' })
 @Component({
   selector: 'app-playlist',
@@ -26,7 +33,31 @@ export class PlaylistComponent implements OnInit {
  audio:any;
  sharedData:SharedDataService;
   db:MusicServiceService;
+  flag=0;
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    
+    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+      this.nextp(null);
+    }
+
+    if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+      this.previousp(null);
+    }
+    if (event.keyCode === KEY_CODE.SPAC_BAR) {
+      if(this.flag==1){
+        this.pausp(null);
+      }
+      else{
+        this.playp(null);
+      }
+        
+    }
+  }
   constructor(data1:SharedDataService,db:MusicServiceService ) { 
+   
     this.db=db;
     this.sharedData=data1;
 
@@ -73,7 +104,7 @@ export class PlaylistComponent implements OnInit {
     console.log("Song loaded");
   }
   nextp(event) {
-    
+   
     this.audio=$("#playing");
   //  $("#"+this.sharedData.nowPi).css({"background-color":"red"});
     this.i=(this.i-1)%this.sharedData.length;
@@ -96,11 +127,13 @@ export class PlaylistComponent implements OnInit {
 pausp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("pause"); 
+  this.flag=0;
 }
 
 playp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("play");  
+  this.flag=1;
 }
  previousp(event) {
   this.audio=$("#playing");
@@ -115,6 +148,11 @@ playp(event) {
     this.audio.attr('src', this.nowp);
     this.audio.trigger("play");
     this.src_playing =this.playlist[this.i].Name;
+}
+playthis(i){
+  this.sharedData.nowPi=this.sharedData.sharedplaylist.length-i-1;
+  this.loadSong();
+  this.playp(null);
 }
 removesong(index)
 {

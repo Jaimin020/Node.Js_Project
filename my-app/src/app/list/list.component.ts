@@ -16,7 +16,17 @@ export class ListComponent implements OnInit {
   constructor( sharedData:SharedDataService,private route: ActivatedRoute,private dbcontext:MusicServiceService) { 
 this.sharedData=sharedData;
   }
-
+  playall(){
+    var i=this.sharedData.nowPi;
+    this.musiclist.reverse().forEach(x => { this.sharedData.sharedplaylist.splice(i, 0, x);
+    i++;
+     });
+     this.musiclist.reverse();
+     this.sharedData.length= this.sharedData.length+this.musiclist.length;
+     this.sharedData.nowPi=i-1;
+     console.log(this.sharedData.sharedplaylist)
+     this.sharedData.callMethodOfSecondComponent("load"); 
+  }
   playsong(song,icon){
     console.log(icon.src);
     if(icon.src.includes("play"))
@@ -57,8 +67,7 @@ this.sharedData=sharedData;
           }
         });
       });
-    }
-    else if(this.charts.includes("Bollywood")){
+    }else if(this.charts.includes("Bollywood")){
       this.dbcontext.getMusic().subscribe(x=>{
         x.forEach(e => {
           if(e.Type=="Hindi")
@@ -91,7 +100,7 @@ this.sharedData=sharedData;
         });
       });
 
-    }else if(this.charts.includes("Zang")){
+    }else if(this.charts.includes("Zang" )||this.charts.includes("Daily" )){
       var i=1;
       this.dbcontext.getMusic().subscribe(x=>{
         x.forEach(e => {
@@ -116,14 +125,14 @@ this.sharedData=sharedData;
       });
       
 
-    }else if(this.charts.includes("New Realeases")){
+    }else if(this.charts.includes("New Releases")){
       var i=1;
       this.dbcontext.getMusic().subscribe(x=>{
-        x.sort((c,y)=>{
-          var q:Number=c.Time_stamp;
-          var w :Number= y.Time_stamp;
-
-          return (w.valueOf()-q.valueOf())}).forEach(e => {
+       x.sort(function(a,b){
+          return a.Time_stamp >b.Time_stamp?1:a.Time_stamp <b.Time_stamp?-1:0
+         }
+         );
+        x.forEach(e => {
           if( i<=10) 
           {
              i++;

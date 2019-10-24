@@ -38,8 +38,8 @@
     </div>
 
     <div id="contentid" class="card-columns">
-        <div *ngFor="let music of chartsList" class="card text-white dark-theme-sid-color bounceIn"> 
-            <img class="figure-img  mcardplay" style="top:2.5em;left: 2.5em;" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
+        <div  (click)="topCharts(music)" *ngFor="let music of chartsList" class="card text-white dark-theme-sid-color bounceIn"> 
+            <img class="figure-img  mcardplay"(click)="addchart(music);$event.stopPropagation()" style="top:2.5em;left: 2.5em;" (click)="addsong(music)" src="../../assets/resources/icons8-circled-play.png">
             <img src="{{music.Image}}" style="height: 10em;" class="card-img-top cover">
             <div class="card-body">
                 <h5 class="card-title">{{music.Name}}</h5>
