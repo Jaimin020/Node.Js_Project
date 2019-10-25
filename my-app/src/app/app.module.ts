@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieService } from 'ngx-cookie-service';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { SearchComponent } from './search/search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +27,15 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
     PlaylistComponent,
     AdminComponent,
     LoginComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    SearchComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, Ng2SearchPipeModule
   ],
   providers: [SharedDataService,DbCrudService, CookieService],
   bootstrap: [AppComponent]
