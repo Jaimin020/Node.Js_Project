@@ -65,27 +65,22 @@ export class PlaylistComponent implements OnInit {
       if(value === "load"){
        this.loadSong(); 
        this.playp(null);
-     }
+       this.removesong(this.sharedData.nowPi+1);
+  
+      //  $("#previd").trigger('click');
+      // $("#nextid").trigger('click');
+       
+    //     this.nextp(null);
+    //     this.previousp(null);
+      }
      else if(value == "pause"){
        this.pausp(null);
      }else if(value=="play"){
        this.playp(null);
      }
     });
-    // this.audio.src=this.nowp;
-    // this.audio.onended= function(){
-    //   this.i=(this.i+1)%10;
-    //   this.nowp=this.playlist[this.i].File;
-    //   this.audio.src=this.nowp;
-    //   this.audio.load();
-    //   this.audio.play();
-   
+  
       
-    //   this.nowimg=this.playlist[this.i].Image;
-    //   this.src_playing =this.playlist[this.i].Name;
-   
-    //   console.log(this.nowp);
-    // };
   }
  
   loadSong(){
@@ -102,12 +97,15 @@ export class PlaylistComponent implements OnInit {
     this.nowimg=this.sharedData.sharedplaylist[this.i].Image;
     this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
     console.log("Song loaded");
+  
+
   }
   nextp(event) {
    
     this.audio=$("#playing");
-  //  $("#"+this.sharedData.nowPi).css({"background-color":"red"});
+   
     this.i=(this.i-1)%this.sharedData.length;
+    
     this.sharedData.nowPi=this.i;
     if(this.i<0)
     {
@@ -123,17 +121,20 @@ export class PlaylistComponent implements OnInit {
     this.src_playing =this.sharedData.sharedplaylist[this.i].Name;
     console.log(this.sharedData.sharedplaylist[this.i].Name);
     console.log(this.i);
+    this.setcolor(0);
  }
 pausp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("pause"); 
   this.flag=0;
+  //this.setcolor(0);
 }
 
 playp(event) {
   this.audio=$("#playing");
   $("#playing").trigger("play");  
   this.flag=1;
+ // this.setcolor(0);
 }
  previousp(event) {
   this.audio=$("#playing");
@@ -148,11 +149,13 @@ playp(event) {
     this.audio.attr('src', this.nowp);
     this.audio.trigger("play");
     this.src_playing =this.playlist[this.i].Name;
+    this.setcolor(0);
 }
 playthis(i){
   this.sharedData.nowPi=this.sharedData.sharedplaylist.length-i-1;
   this.loadSong();
   this.playp(null);
+  this.setcolor(0);
 }
 removesong(index)
 {
@@ -165,7 +168,17 @@ removesong(index)
   this.sharedData.sharedplaylist.splice(this.sharedData.length -index-1, 1);
   this.playlist=this.sharedData.sharedplaylist;
   this.sharedData.length=this.sharedData.length-1;
+  this.setcolor(0);
 
+}
+setcolor(i:number)
+{
+  for(var j=1;j<this.sharedData.length;j++)
+    {
+      $("#play"+j).css({"background-color":" rgb(38, 38, 38)"});
+    }
+
+    $("#play"+(this.sharedData.nowPi-i)).css({"background-color":"red"});
 }
   ngOnInit() {
 
@@ -186,8 +199,8 @@ removesong(index)
         this.src_playing=this.playlist[this.i].Name;
         this.loadSong();
       });
-
+ 
       console.log(this.audio);
-   
+      
   }
 }
